@@ -2,31 +2,67 @@ import { NextResponse } from 'next/server';
 import { promises as fs } from 'fs';
 import path from 'path';
 
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwfyN8U-i80r7HO2h58oQOjsutFp8yeDC5R1TmwxdRDFazlERJ0Mfy2DwyqmghQ3PAu9w/exec';
 const dataFilePath = path.join(process.cwd(), 'data', 'lab-bookings.json');
 
-// Helper to read data
-async function getBookingsData() {
-    try {
-        const fileContents = await fs.readFile(dataFilePath, 'utf8');
-        return JSON.parse(fileContents);
-    } catch (error) {
-        // If file doesn't exist or is empty, return empty array
-        return [];
-    }
-}
-
-// Helper to write data
+// Helper to write data (for POST/admin actions)
 async function saveBookingsData(data) {
     await fs.writeFile(dataFilePath, JSON.stringify(data, null, 2), 'utf8');
 }
 
+// Helper to read local data (for POST/admin actions to merge with if needed)
+async function getLocalBookingsData() {
+    try {
+        const fileContents = await fs.readFile(dataFilePath, 'utf8');
+        return JSON.parse(fileContents);
+    } catch (error) {
+        return [];
+    }
+}
+
+// 🟢 NEW: Fetch directly from Google Sheets for the main GET request
 export async function GET(request) {
     try {
-        const bookings = await getBookingsData();
-        return NextResponse.json(bookings);
+        // Fetch LIVE data from Google Sheets API with no caching
+        const response = await fetch(GOOGLE_SCRIPT_URL, { cache: 'no-store' });
+        
+        if (!response.ok) {
+            throw new Error('Failed to fetch from Google Sheets');
+        }
+        
+        const googleDocsData = await response.json();
+        
+        // Map the Google Sheets data to our app's internal format
+        const liveBookings = googleDocsData.map((row, index) => {
+            const slot = row['Requested Slot'] || '';
+            return {
+                id: `gsheet-${index}-${row['Timestamp'] || Date.now()}`,
+                campus: row['Campus'] || '',
+                term: row['Term'] || '',
+                year: row['Year']?.toString() || '',
+                lecturerName: row['Lecturer Name'] || '',
+                email: row['Email'] || '',
+                courseCode: row['Course Name'] || '',
+                program: row['Program'] || '',
+                section: row['Section'] || '',
+                totalStudents: parseInt(row['Total Students'] || '0', 10),
+                requestedDay: row['Requested Day'] || (slot ? slot.split(' ')[0] : ''),
+                requestedSlot: slot,
+                remarks: row['Remarks'] || '',
+                status: (row['Status'] || '').toLowerCase() || 'pending', // e.g. "approved"
+                source: row['Source'] || 'google-sheet',
+                room: row['Room'] || row['room'] || '', // Pull from a "Room" column in Google Sheets
+                createdAt: row['Timestamp'] || new Date().toISOString()
+            };
+        });
+
+        return NextResponse.json(liveBookings);
     } catch (error) {
-        console.error('Error reading bookings:', error);
-        return NextResponse.json({ error: 'Failed to read bookings' }, { status: 500 });
+        console.error('Error fetching live from Google Sheets:', error);
+        
+        // Fallback to local JSON if Google Sheets is unreachable
+        const localBookings = await getLocalBookingsData();
+        return NextResponse.json(localBookings);
     }
 }
 
