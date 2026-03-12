@@ -11,21 +11,21 @@
         "name": "Narut",
         "email": "narut@siit.tu.ac.th",
         "password": "siit1234",
-        "role": "tech"
+        "role": "admin"
     },
     {
         "id": 3,
         "name": "Payoot",
         "email": "payoot@siit.tu.ac.th",
         "password": "siit1234",
-        "role": "tech"
+        "role": "admin"
     },
     {
         "id": 4,
         "name": "Kowit",
         "email": "kowit@siit.tu.ac.th",
         "password": "siit1234",
-        "role": "tech"
+        "role": "admin"
     },
     {
         "id": 5,
