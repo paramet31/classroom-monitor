@@ -35,6 +35,13 @@ export async function GET(request) {
         // Map the Google Sheets data to our app's internal format
         const liveBookings = googleDocsData.map((row, index) => {
             const slot = row['Requested Slot'] || '';
+            
+            // Make room string more forgiving (e.g. "1-301" -> "Lab 1-301")
+            let rawRoom = String(row['Room'] || row['room'] || '').trim();
+            if (rawRoom && !rawRoom.toLowerCase().startsWith('lab')) {
+                rawRoom = `Lab ${rawRoom}`;
+            }
+
             return {
                 id: `gsheet-${index}-${row['Timestamp'] || Date.now()}`,
                 campus: row['Campus'] || '',
@@ -51,7 +58,7 @@ export async function GET(request) {
                 remarks: row['Remarks'] || '',
                 status: (row['Status'] || '').toLowerCase() || 'pending', // e.g. "approved"
                 source: row['Source'] || 'google-sheet',
-                room: row['Room'] || row['room'] || '', // Pull from a "Room" column in Google Sheets
+                room: rawRoom,
                 createdAt: row['Timestamp'] || new Date().toISOString()
             };
         });

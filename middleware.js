@@ -6,7 +6,7 @@ export function middleware(request) {
 
     // Paths that don't require authentication
     const isAuthRoute = pathname.startsWith('/login') || pathname.startsWith('/api/auth') || pathname.startsWith('/request') || pathname.startsWith('/api/requests');
-    const isPublicRoute = pathname.startsWith('/_next') || pathname.startsWith('/favicon.ico') || pathname.startsWith('/public');
+    const isPublicRoute = pathname.startsWith('/_next') || pathname.startsWith('/favicon.ico') || pathname.startsWith('/public') || pathname.startsWith('/api/lab-booking');
 
     if (isPublicRoute) {
         return NextResponse.next();
