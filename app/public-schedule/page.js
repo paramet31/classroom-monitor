@@ -149,7 +149,7 @@ export default function PublicSchedulePage() {
                                                                             <td key={slotStr} colSpan={maxDuration} className={styles.slotActive} style={{ minWidth: `${maxDuration * 100}px` }}>
                                                                                 {items.map(b => (
                                                                                     <div key={b.id} className={styles.bookingItem} title={`${b.lecturerName} - ${b.courseCode} (${b.section})`}>
-                                                                                        <div className={styles.courseCode}>{b.courseCode}</div>
+                                                                                        <div className={styles.courseCode}>{b.courseCode} <span style={{fontSize: '11px', fontWeight: 'normal', opacity: 0.9}}>({b.section})</span></div>
                                                                                         <div className={styles.bookingTime}>{b.requestedSlot.split(' ').slice(1).join(' ')}</div>
                                                                                     </div>
                                                                                 ))}
