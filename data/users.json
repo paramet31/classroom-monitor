@@ -1,0 +1,37 @@
+[
+    {
+        "id": 1,
+        "name": "Admin SIIT",
+        "email": "admin@siit.tu.ac.th",
+        "password": "siit1234",
+        "role": "admin"
+    },
+    {
+        "id": 2,
+        "name": "Narut",
+        "email": "narut@siit.tu.ac.th",
+        "password": "siit1234",
+        "role": "tech"
+    },
+    {
+        "id": 3,
+        "name": "Payoot",
+        "email": "payoot@siit.tu.ac.th",
+        "password": "siit1234",
+        "role": "tech"
+    },
+    {
+        "id": 4,
+        "name": "Kowit",
+        "email": "kowit@siit.tu.ac.th",
+        "password": "siit1234",
+        "role": "tech"
+    },
+    {
+        "id": 5,
+        "name": "Paramet",
+        "email": "paramet@siit.tu.ac.th",
+        "password": "siit1234",
+        "role": "admin"
+    }
+]

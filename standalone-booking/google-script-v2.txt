@@ -1,0 +1,65 @@
+function doPost(e) {
+  try {
+    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    var data = JSON.parse(e.postData.contents);
+
+    if (sheet.getLastRow() === 0) {
+      sheet.appendRow([
+        "Timestamp", "Campus", "Term", "Year", "Lecturer Name", "Email",
+        "Course Name", "Program", "Section", "Total Students",
+        "Requested Day", "Requested Slot", "Remarks", "Status", "Source"
+      ]);
+      sheet.getRange("A1:O1").setBackground("#d9ead3").setFontWeight("bold");
+    }
+
+    sheet.appendRow([
+      new Date().toISOString(),
+      data.campus || "",
+      data.term || "",
+      data.year || "",
+      data.lecturerName || "",
+      data.email || "",
+      data.courseName || "",
+      data.program || "",
+      data.section || "",
+      data.totalStudents || "",
+      data.requestedDay || "",
+      data.requestedSlot || "",
+      data.remarks || "",
+      data.status || "pending",
+      data.source || "standalone-form"
+    ]);
+
+    return ContentService.createTextOutput(JSON.stringify({ "status": "success" }))
+                         .setMimeType(ContentService.MimeType.JSON);
+  } catch(error) {
+    return ContentService.createTextOutput(JSON.stringify({ "status": "error", "message": String(error) }))
+                         .setMimeType(ContentService.MimeType.JSON);
+  }
+}
+
+// ฟังก์ชันใหม่! สำหรับให้ตารางเรียนสาธารณะ หรือ Admin Backend (Next.js) ดึงข้อมูลไปแสดงผล
+function doGet(e) {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  var data = sheet.getDataRange().getValues();
+  
+  if (data.length <= 1) {
+    return ContentService.createTextOutput(JSON.stringify([]))
+                         .setMimeType(ContentService.MimeType.JSON);
+  }
+  
+  var headers = data[0];
+  var rows = data.slice(1);
+  var result = [];
+  
+  rows.forEach(function(row) {
+    var obj = {};
+    headers.forEach(function(header, idx) {
+      obj[header] = row[idx];
+    });
+    result.push(obj);
+  });
+  
+  return ContentService.createTextOutput(JSON.stringify(result))
+                       .setMimeType(ContentService.MimeType.JSON);
+}

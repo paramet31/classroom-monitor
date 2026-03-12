@@ -1,0 +1,190 @@
+{
+  "3203": {
+    "latestStatus": "Idle",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "3204": {
+    "latestStatus": "Idle",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "3303": {
+    "latestStatus": "Stopped",
+    "ongoingIncident": {
+      "startTime": "2026-03-12T04:29:00.000Z",
+      "fileTimeWhenStopped": "11:29",
+      "reason": "Stopped"
+    },
+    "incidentHistory": []
+  },
+  "3304": {
+    "latestStatus": "Idle",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "3305": {
+    "latestStatus": "Idle",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "3401": {
+    "latestStatus": "Idle",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "1-301": {
+    "latestStatus": "Active",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "1-304": {
+    "latestStatus": "Finished",
+    "ongoingIncident": {
+      "startTime": "2026-03-12T02:24:00.000Z",
+      "fileTimeWhenStopped": "09:24",
+      "reason": "Finished"
+    },
+    "incidentHistory": []
+  },
+  "1-306": {
+    "latestStatus": "Active",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "1-307": {
+    "latestStatus": "Stopped",
+    "ongoingIncident": {
+      "startTime": "2026-03-12T04:28:00.000Z",
+      "fileTimeWhenStopped": "11:28",
+      "reason": "Stopped"
+    },
+    "incidentHistory": []
+  },
+  "1-312": {
+    "latestStatus": "Stopped",
+    "ongoingIncident": {
+      "startTime": "2026-03-12T04:30:00.000Z",
+      "fileTimeWhenStopped": "11:30",
+      "reason": "Stopped"
+    },
+    "incidentHistory": []
+  },
+  "1-313": {
+    "latestStatus": "Active",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "1-401": {
+    "latestStatus": "Active",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "1-402": {
+    "latestStatus": "Stopped",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "1-403": {
+    "latestStatus": "Stopped",
+    "ongoingIncident": {
+      "startTime": "2026-03-12T04:38:00.000Z",
+      "fileTimeWhenStopped": "11:38",
+      "reason": "Stopped"
+    },
+    "incidentHistory": [
+      {
+        "startTime": "2026-03-12T03:22:00.000Z",
+        "endTime": "2026-03-12T03:46:13.715Z",
+        "durationMinutes": 24,
+        "reason": "Stopped",
+        "resolution": "Recording resumed",
+        "lastFileTime": "10:22"
+      }
+    ]
+  },
+  "1-404": {
+    "latestStatus": "Active",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "1-405": {
+    "latestStatus": "Active",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "1-406": {
+    "latestStatus": "Active",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "1-407": {
+    "latestStatus": "Active",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "1-408": {
+    "latestStatus": "Active",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "1-409": {
+    "latestStatus": "Active",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "1-410": {
+    "latestStatus": "Active",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "1-411": {
+    "latestStatus": "Idle",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "1-501": {
+    "latestStatus": "Active",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "1-502": {
+    "latestStatus": "Stopped",
+    "ongoingIncident": {
+      "startTime": "2026-03-12T04:30:00.000Z",
+      "fileTimeWhenStopped": "11:30",
+      "reason": "Stopped"
+    },
+    "incidentHistory": []
+  },
+  "1-503": {
+    "latestStatus": "Active",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "1-504": {
+    "latestStatus": "Active",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "1-506": {
+    "latestStatus": "Active",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "1-507": {
+    "latestStatus": "Active",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "1-101": {
+    "latestStatus": "Idle",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "1-102": {
+    "latestStatus": "Active",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  }
+}

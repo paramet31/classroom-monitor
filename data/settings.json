@@ -1,0 +1,181 @@
+{
+  "rooms": [
+    {
+      "id": "1-101",
+      "floor": "Floor 1",
+      "enabled": true
+    },
+    {
+      "id": "1-102",
+      "floor": "Floor 1",
+      "enabled": true
+    },
+    {
+      "id": "1-301",
+      "floor": "Floor 3",
+      "enabled": true
+    },
+    {
+      "id": "1-304",
+      "floor": "Floor 3",
+      "enabled": true
+    },
+    {
+      "id": "1-306",
+      "floor": "Floor 3",
+      "enabled": true
+    },
+    {
+      "id": "1-307",
+      "floor": "Floor 3",
+      "enabled": true
+    },
+    {
+      "id": "1-312",
+      "floor": "Floor 3",
+      "enabled": true
+    },
+    {
+      "id": "1-313",
+      "floor": "Floor 3",
+      "enabled": true
+    },
+    {
+      "id": "1-401",
+      "floor": "Floor 4",
+      "enabled": true
+    },
+    {
+      "id": "1-402",
+      "floor": "Floor 4",
+      "enabled": true
+    },
+    {
+      "id": "1-403",
+      "floor": "Floor 4",
+      "enabled": true
+    },
+    {
+      "id": "1-404",
+      "floor": "Floor 4",
+      "enabled": true
+    },
+    {
+      "id": "1-405",
+      "floor": "Floor 4",
+      "enabled": true
+    },
+    {
+      "id": "1-406",
+      "floor": "Floor 4",
+      "enabled": true
+    },
+    {
+      "id": "1-407",
+      "floor": "Floor 4",
+      "enabled": true
+    },
+    {
+      "id": "1-408",
+      "floor": "Floor 4",
+      "enabled": true
+    },
+    {
+      "id": "1-409",
+      "floor": "Floor 4",
+      "enabled": true
+    },
+    {
+      "id": "1-410",
+      "floor": "Floor 4",
+      "enabled": true
+    },
+    {
+      "id": "1-411",
+      "floor": "Floor 4",
+      "enabled": true
+    },
+    {
+      "id": "1-501",
+      "floor": "Floor 5",
+      "enabled": true
+    },
+    {
+      "id": "1-502",
+      "floor": "Floor 5",
+      "enabled": true
+    },
+    {
+      "id": "1-503",
+      "floor": "Floor 5",
+      "enabled": true
+    },
+    {
+      "id": "1-504",
+      "floor": "Floor 5",
+      "enabled": true
+    },
+    {
+      "id": "1-506",
+      "floor": "Floor 5",
+      "enabled": true
+    },
+    {
+      "id": "1-507",
+      "floor": "Floor 5",
+      "enabled": true
+    },
+    {
+      "id": "3203",
+      "floor": "Building 3",
+      "enabled": true
+    },
+    {
+      "id": "3204",
+      "floor": "Building 3",
+      "enabled": true
+    },
+    {
+      "id": "3303",
+      "floor": "Building 3",
+      "enabled": true
+    },
+    {
+      "id": "3304",
+      "floor": "Building 3",
+      "enabled": true
+    },
+    {
+      "id": "3305",
+      "floor": "Building 3",
+      "enabled": true
+    },
+    {
+      "id": "3401",
+      "floor": "Building 3",
+      "enabled": true
+    }
+  ],
+  "emailRecipients": [
+    "payoot@siit.tu.ac.th",
+    "narut@siit.tu.ac.th",
+    "kowit@siit.tu.ac.th",
+    "paramet@siit.tu.ac.th"
+  ],
+  "monitoring": {
+    "activeThresholdMinutes": 5,
+    "stoppedThresholdMinutes": 60,
+    "refreshIntervalSeconds": 300,
+    "gracePeriodMinutes": 15
+  },
+  "automation": {
+    "dailyReportEnabled": true,
+    "dailyReportTimes": [
+      "09:30",
+      "13:30"
+    ],
+    "unrecordedAlertEnabled": true,
+    "alertIntervalMinutes": 5,
+    "alertCooldownMinutes": 30
+  }
+}

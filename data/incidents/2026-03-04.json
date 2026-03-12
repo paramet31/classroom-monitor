@@ -1,0 +1,258 @@
+{
+  "3203": {
+    "latestStatus": "Idle",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "3204": {
+    "latestStatus": "Idle",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "3303": {
+    "latestStatus": "Idle",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "3304": {
+    "latestStatus": "Idle",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "3305": {
+    "latestStatus": "Idle",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "3401": {
+    "latestStatus": "Idle",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "1-301": {
+    "latestStatus": "Active",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "1-304": {
+    "latestStatus": "Finished",
+    "ongoingIncident": null,
+    "incidentHistory": [
+      {
+        "startTime": "2026-03-04T04:19:00.000Z",
+        "endTime": "2026-03-04T06:06:34.579Z",
+        "durationMinutes": 107,
+        "reason": "Stopped",
+        "resolution": "Class period ended",
+        "lastFileTime": "11:19"
+      }
+    ]
+  },
+  "1-306": {
+    "latestStatus": "Active",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "1-307": {
+    "latestStatus": "Finished",
+    "ongoingIncident": null,
+    "incidentHistory": [
+      {
+        "startTime": "2026-03-04T04:36:00.000Z",
+        "endTime": "2026-03-04T06:06:34.864Z",
+        "durationMinutes": 90,
+        "reason": "Stopped",
+        "resolution": "Class period ended",
+        "lastFileTime": "11:36"
+      }
+    ]
+  },
+  "1-312": {
+    "latestStatus": "Idle",
+    "ongoingIncident": null,
+    "incidentHistory": [
+      {
+        "startTime": "2026-03-04T02:22:25.251Z",
+        "endTime": "2026-03-04T06:06:34.972Z",
+        "durationMinutes": 224,
+        "reason": "Idle",
+        "resolution": "Class period ended",
+        "lastFileTime": ""
+      }
+    ]
+  },
+  "1-313": {
+    "latestStatus": "Bad Recording",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "1-401": {
+    "latestStatus": "Stopped",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "1-402": {
+    "latestStatus": "Bad Recording",
+    "ongoingIncident": null,
+    "incidentHistory": [
+      {
+        "startTime": "2026-02-27T02:06:28.218Z",
+        "endTime": "2026-03-04T02:22:25.595Z",
+        "durationMinutes": 7215,
+        "reason": "Idle",
+        "resolution": "Recording resumed",
+        "lastFileTime": ""
+      }
+    ]
+  },
+  "1-403": {
+    "latestStatus": "Finished",
+    "ongoingIncident": {
+      "startTime": "2026-03-04T04:43:00.000Z",
+      "fileTimeWhenStopped": "11:43",
+      "reason": "Finished"
+    },
+    "incidentHistory": [
+      {
+        "startTime": "2026-03-04T03:32:00.000Z",
+        "endTime": "2026-03-04T03:54:23.447Z",
+        "durationMinutes": 22,
+        "reason": "Stopped",
+        "resolution": "Recording resumed",
+        "lastFileTime": "10:32"
+      }
+    ]
+  },
+  "1-404": {
+    "latestStatus": "Idle",
+    "ongoingIncident": null,
+    "incidentHistory": [
+      {
+        "startTime": "2026-03-04T03:38:33.159Z",
+        "endTime": "2026-03-04T06:06:35.639Z",
+        "durationMinutes": 148,
+        "reason": "Idle",
+        "resolution": "Class period ended",
+        "lastFileTime": ""
+      }
+    ]
+  },
+  "1-405": {
+    "latestStatus": "Stopped",
+    "ongoingIncident": {
+      "startTime": "2026-03-04T08:31:00.000Z",
+      "fileTimeWhenStopped": "15:31",
+      "reason": "Stopped"
+    },
+    "incidentHistory": []
+  },
+  "1-406": {
+    "latestStatus": "Active",
+    "ongoingIncident": null,
+    "incidentHistory": [
+      {
+        "startTime": "2026-03-04T02:31:00.000Z",
+        "endTime": "2026-03-04T04:55:15.366Z",
+        "durationMinutes": 144,
+        "reason": "Finished",
+        "resolution": "Recording resumed",
+        "lastFileTime": "09:31"
+      }
+    ]
+  },
+  "1-407": {
+    "latestStatus": "Active",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "1-408": {
+    "latestStatus": "Active",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "1-409": {
+    "latestStatus": "Active",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "1-410": {
+    "latestStatus": "Bad Recording",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "1-411": {
+    "latestStatus": "Idle",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "1-501": {
+    "latestStatus": "Finished",
+    "ongoingIncident": {
+      "startTime": "2026-03-04T06:42:00.000Z",
+      "fileTimeWhenStopped": "13:42",
+      "reason": "Finished"
+    },
+    "incidentHistory": []
+  },
+  "1-502": {
+    "latestStatus": "Stopped",
+    "ongoingIncident": {
+      "startTime": "2026-03-04T08:01:00.000Z",
+      "fileTimeWhenStopped": "15:01",
+      "reason": "Stopped"
+    },
+    "incidentHistory": []
+  },
+  "1-503": {
+    "latestStatus": "Stopped",
+    "ongoingIncident": null,
+    "incidentHistory": [
+      {
+        "startTime": "2026-03-04T04:16:00.000Z",
+        "endTime": "2026-03-04T06:06:36.955Z",
+        "durationMinutes": 110,
+        "reason": "Stopped",
+        "resolution": "Recording resumed",
+        "lastFileTime": "11:16"
+      }
+    ]
+  },
+  "1-504": {
+    "latestStatus": "Finished",
+    "ongoingIncident": {
+      "startTime": "2026-03-04T07:16:00.000Z",
+      "fileTimeWhenStopped": "14:16",
+      "reason": "Finished"
+    },
+    "incidentHistory": []
+  },
+  "1-506": {
+    "latestStatus": "Active",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "1-507": {
+    "latestStatus": "Active",
+    "ongoingIncident": null,
+    "incidentHistory": [
+      {
+        "startTime": "2026-02-27T02:06:33.022Z",
+        "endTime": "2026-03-04T02:22:27.328Z",
+        "durationMinutes": 7215,
+        "reason": "Idle",
+        "resolution": "Recording resumed",
+        "lastFileTime": ""
+      }
+    ]
+  },
+  "1-101": {
+    "latestStatus": "Idle",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "1-102": {
+    "latestStatus": "Idle",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  }
+}

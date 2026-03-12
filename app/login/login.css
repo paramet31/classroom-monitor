@@ -1,0 +1,304 @@
+.login-container {
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--background);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ambient Background Animations */
+.ambient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.15;
+  z-index: 0;
+  animation: float 20s infinite ease-in-out alternate;
+}
+
+.orb-1 {
+  width: 50vw;
+  height: 50vw;
+  background: var(--primary);
+  top: -20vh;
+  left: -20vw;
+  animation-delay: 0s;
+}
+
+.orb-2 {
+  width: 40vw;
+  height: 40vw;
+  background: #0056b3;
+  bottom: -10vh;
+  right: -10vw;
+  animation-delay: -5s;
+}
+
+@keyframes float {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(5%, 10%) scale(1.05); }
+  100% { transform: translate(-5%, -5%) scale(0.95); }
+}
+
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  padding: 3rem 2.5rem;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  background: rgba(22, 27, 34, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 20px;
+  animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) ease-out;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.login-header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.brand-badge {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, rgba(35, 134, 54, 0.2), rgba(46, 160, 67, 0.05));
+  border: 1px solid rgba(35, 134, 54, 0.3);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+  color: var(--primary);
+  box-shadow: 0 0 20px rgba(35, 134, 54, 0.2);
+}
+
+.login-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-bright);
+  letter-spacing: -0.025em;
+}
+
+.login-subtitle {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.error-alert {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: rgba(248, 81, 73, 0.1);
+  border: 1px solid rgba(248, 81, 73, 0.2);
+  border-radius: 10px;
+  color: #ff7b72;
+  font-size: 0.85rem;
+  font-weight: 500;
+  animation: shake 0.4s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+@keyframes shake {
+  10%, 90% { transform: translate3d(-1px, 0, 0); }
+  20%, 80% { transform: translate3d(2px, 0, 0); }
+  30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+  40%, 60% { transform: translate3d(4px, 0, 0); }
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 1rem;
+  color: var(--text-muted);
+  pointer-events: none;
+  transition: color 0.2s;
+}
+
+.premium-input {
+  width: 100%;
+  background: rgba(13, 17, 23, 0.5);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  padding: 0.875rem 1rem 0.875rem 2.75rem;
+  color: var(--text-bright);
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.premium-input::placeholder {
+  color: #484f58;
+}
+
+.premium-input:focus {
+  border-color: var(--primary);
+  background: rgba(13, 17, 23, 0.8);
+  box-shadow: 0 0 0 3px rgba(35, 134, 54, 0.15);
+}
+
+.premium-input:focus + .input-icon,
+.premium-input:not(:placeholder-shown) ~ .input-icon {
+  color: var(--primary);
+}
+
+.toggle-password {
+  position: absolute;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+}
+
+.toggle-password:hover {
+  color: var(--text-bright);
+}
+
+.form-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: -0.5rem;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.premium-checkbox {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--card-border);
+  border-radius: 4px;
+  background: rgba(13, 17, 23, 0.5);
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s;
+}
+
+.premium-checkbox:checked {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.premium-checkbox:checked::after {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 1px;
+  width: 4px;
+  height: 8px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.remember-me label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.forgot-link {
+  font-size: 0.85rem;
+  color: var(--primary);
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.forgot-link:hover {
+  color: var(--primary-hover);
+  text-decoration: underline;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 0.875rem;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+  color: white;
+  border: none;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(35, 134, 54, 0.25);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 48px;
+}
+
+.login-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(35, 134, 54, 0.35);
+  background: linear-gradient(135deg, #2ea043, #3fb950);
+}
+
+.login-btn:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.login-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.loader {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

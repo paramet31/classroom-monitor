@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIIT Lab Booking Request</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: #fff;
+            /* Light theme background */
+            color: #1f2937;
+            /* Dark text for light theme */
+            overflow-x: hidden;
+        }
+
+        /* === Navigation Bar (Approximation of the image top right) === */
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background: #fff;
+            border-bottom: 1px solid #f3f4f6;
+        }
+
+        .nav-breadcrumbs {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #6b7280;
+        }
+
+        .nav-breadcrumbs strong {
+            color: #111827;
+            font-weight: 600;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #6b7280;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #111827;
+        }
+
+        /* === Main Container === */
+        .main-container {
+            max-width: 900px;
+            margin: 2rem auto 4rem;
+            padding: 0 1.5rem;
+        }
+
+        /* === Content Wrapper (Matches the rounded bordered area in image) === */
+        .content-wrapper {
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            border: 1px solid #e5e7eb;
+            overflow: hidden;
+        }
+
+        /* === Hero Image Section === */
+        .hero-section {
+            height: 240px;
+            background-image: url('./whale.png');
+            /* Local image or remote link */
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center bottom;
+            position: relative;
+            background-color: #f3f4f6;
+            /* Fallback */
+        }
+
+        /* Gradient overlay to make text readable */
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 60%);
+        }
+
+        /* === Header Content (Title & Tags) === */
+        .header-content {
+            padding: 2rem 3rem 1.5rem;
+            position: relative;
+            z-index: 1;
+            margin-top: -60px;
+            /* Pull up to overlap gradient */
+        }
+
+        .title-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .play-icon {
+            width: 48px;
+            height: 48px;
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .play-icon svg {
+            width: 20px;
+            height: 20px;
+            color: #374151;
+            margin-left: 2px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #111827;
+            letter-spacing: -0.02em;
+        }
+
+        .header-desc {
+            font-size: 0.95rem;
+            color: #4b5563;
+            max-width: 650px;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        /* === Tags === */
+        .tags-row {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #e5e7eb;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #374151;
+        }
+
+        .tag svg {
+            width: 14px;
+            height: 14px;
+            color: #6b7280;
+        }
+
+        /* === Form Sections === */
+        .form-section {
+            padding: 2rem 3rem;
+        }
+
+        .section-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .section-header h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #111827;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-header h3 span.part-label {
+            font-weight: 500;
+            color: #6b7280;
+            font-size: 1rem;
+        }
+
+        .section-header p {
+            font-size: 0.85rem;
+            color: #6b7280;
+            margin-top: 0.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            gap: 1.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .form-row.cols-2 {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .form-row.cols-3 {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        .form-row.cols-4 {
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #374151;
+        }
+
+        .form-group .req {
+            color: #ef4444;
+        }
+
+        input,
+        select,
+        textarea {
+            background: #fff;
+            border: 1px solid #d1d5db;
+            color: #111827;
+            padding: 0.7rem 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-family: inherit;
+            width: 100%;
+            transition: all 0.2s ease;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+            outline: none;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: #9ca3af;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .input-error {
+            border-color: #ef4444 !important;
+        }
+
+        .divider {
+            height: 1px;
+            background: #e5e7eb;
+            margin: 0 3rem;
+        }
+
+        /* === Submit Section === */
+        .submit-section {
+            padding: 2rem 3rem 3rem;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .btn-submit {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: #111827;
+            /* Dark button for light theme */
+            color: #fff;
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: inherit;
+            min-width: 160px;
+        }
+
+        .btn-submit:hover {
+            background: #374151;
+        }
+
+        .btn-submit:active {
+            transform: translateY(1px);
+        }
+
+        /* === Success Modal (Updated for Light Theme) === */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(17, 24, 39, 0.5);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal {
+            background: #fff;
+            border-radius: 16px;
+            padding: 2.5rem;
+            max-width: 460px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            animation: modalPop 0.3s ease;
+        }
+
+        @keyframes modalPop {
+            from {
+                opacity: 0;
+                transform: scale(0.95) translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .modal-icon-wrap {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: #dcfce7;
+            margin: 0 auto 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #16a34a;
+        }
+
+        .modal-icon-wrap svg {
+            width: 32px;
+            height: 32px;
+        }
+
+        .modal h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal p {
+            font-size: 0.85rem;
+            color: #4b5563;
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal .preview {
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: left;
+            font-size: 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal .preview .prow {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.4rem 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .modal .preview .prow:last-child {
+            border-bottom: none;
+        }
+
+        .modal .preview .prow .plabel {
+            color: #6b7280;
+            font-weight: 500;
+        }
+
+        .modal .preview .prow .pvalue {
+            color: #111827;
+            font-weight: 600;
+            text-align: right;
+        }
+
+        .modal .btn-close {
+            background: #f3f4f6;
+            color: #374151;
+            border: 1px solid #d1d5db;
+            padding: 0.6rem 2rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: inherit;
+            width: 100%;
+            transition: background 0.2s;
+        }
+
+        .modal .btn-close:hover {
+            background: #e5e7eb;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+
+            .header-content,
+            .form-section,
+            .submit-section {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+
+            .form-row.cols-2,
+            .form-row.cols-3,
+            .form-row.cols-4 {
+                grid-template-columns: 1fr;
+            }
+
+            .top-nav {
+                padding: 1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero-section {
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Top Navigation -->
+    <nav class="top-nav">
+        <div class="nav-breadcrumbs">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            Lab Booking <span style="color:#d1d5db; margin: 0 4px;">/</span> <strong>New Request</strong>
+        </div>
+        <div class="nav-links">
+            <a href="#">Course</a>
+            <a href="#">Interviews</a>
+            <a href="#">Resources</a>
+            <a href="https://your-domain.com/public-schedule" target="_blank" style="color: #6366f1; font-weight: 600;">View Schedules ↗</a>
+        </div>
+    </nav>
+
+    <main class="main-container">
+        <div class="content-wrapper">
+
+            <!-- Hero Image -->
+            <div class="hero-section"></div>
+
+            <!-- Header Content -->
+            <div class="header-content">
+                <div class="title-wrapper">
+                    <div class="play-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M8 5v14l11-7z" />
+                        </svg>
+                    </div>
+                    <h1>Booking Request</h1>
+                </div>
+                <p class="header-desc">
+                    This website is an online laboratory (lab) booking system designed to facilitate users in booking
+                    lab rooms for teaching, research, or other related activities.
+                    SIIT Computer and Audiovisual Center.
+                </p>
+                <p style="color: red;">
+                    <em>*** 1-306 needs to be renovated and may not be available in term 1/2026.***</em>
+                </p>
+
+                <!-- Tags -->
+                <div class="tags-row">
+                    <div class="tag">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="3" y1="9" x2="21" y2="9"></line>
+                            <line x1="9" y1="21" x2="9" y2="9"></line>
+                        </svg>
+                        Auto-assign Mode
+                    </div>
+                    <div class="tag">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                            <line x1="8" y1="21" x2="16" y2="21"></line>
+                            <line x1="12" y1="17" x2="12" y2="21"></line>
+                        </svg>
+                        Windows Environments
+                    </div>
+                    <div class="tag">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                        SIIT Campus
+                    </div>
+                </div>
+            </div>
+
+            <!-- Part 1: Academic Info -->
+            <div class="form-section">
+                <div class="section-header">
+                    <h3><span class="part-label">Part 1</span> Details: For Booking Your Requirements</h3>
+
+                </div>
+                <div class="form-row cols-3">
+                    <div class="form-group">
+                        <label>Campus</label>
+                        <select id="campus">
+                            <option value="RS (Rangsit)">RS (Rangsit)</option>
+                            <option value="BKD (Bangkadi)">BKD (Bangkadi)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Term</label>
+                        <select id="term">
+                            <option value="Term 1">Term 1</option>
+                            <option value="Term 2">Term 2</option>
+                            <option value="Term 3">Term 3</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Year</label>
+                        <select id="year">
+                            <option value="2025">2025</option>
+                            <option value="2026" selected>2026</option>
+                            <option value="2027">2027</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row cols-2" style="margin-top: 1.5rem;">
+                    <div class="form-group">
+                        <label>Lecturer Name <span class="req">*</span></label>
+                        <input required type="text" id="lecturerName" placeholder="e.g. Dr. Somchai" />
+                    </div>
+                    <div class="form-group">
+                        <label>Email <span class="req">*</span></label>
+                        <input required type="email" id="email" placeholder="lecturer@siit.tu.ac.th" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- Part 2: Course Info -->
+            <div class="form-section">
+                <div class="section-header">
+                    <h3><span class="part-label">Part 2</span> Course Details</h3>
+                    <p>Specify the course information and capacity requirements.</p>
+                </div>
+                <div class="form-row cols-4">
+                    <div class="form-group">
+                        <label>Course Name <span class="req">*</span></label>
+                        <input required type="text" id="courseName" placeholder="e.g. CSS322" />
+                    </div>
+                    <div class="form-group">
+                        <label>Program <span class="req">*</span></label>
+                        <input required type="text" id="program" placeholder="e.g. IT" />
+                    </div>
+                    <div class="form-group">
+                        <label>Section</label>
+                        <select id="section">
+                            <option>Sec 1</option>
+                            <option>Sec 2</option>
+                            <option>Sec 3</option>
+                            <option>Sec 4</option>
+                            <option>Sec 5</option>
+                            <option>Sec 6</option>
+                            <option>Sec 7</option>
+                            <option>Sec 8</option>
+                            <option>Sec 9</option>
+                            <option>Sec 10</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Students <span class="req">*</span></label>
+                        <input required type="number" id="totalStudents" placeholder="0" min="1" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- Part 3: Schedule -->
+            <div class="form-section">
+                <div class="section-header">
+                    <h3><span class="part-label">Part 3</span> Scheduling & Preferences</h3>
+                    <p>Select the preferred day and time for your lab session.</p>
+                </div>
+                <div class="form-row cols-3">
+                    <div class="form-group">
+                        <label>Requested Day <span class="req">*</span></label>
+                        <select id="requestedDay">
+                            <option>Monday</option>
+                            <option>Tuesday</option>
+                            <option>Wednesday</option>
+                            <option>Thursday</option>
+                            <option>Friday</option>
+                            <option>Saturday</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Start Time <span class="req">*</span></label>
+                        <select id="startTime"></select>
+                    </div>
+                    <div class="form-group">
+                        <label>End Time <span class="req">*</span></label>
+                        <select id="endTime"></select>
+                    </div>
+                </div>
+
+                <div class="form-row" style="margin-top: 1.5rem;">
+                    <div class="form-group">
+                        <label>Remarks (Optional)</label>
+                        <textarea id="remarks"
+                            placeholder="หมายเหตุเพิ่มเติม เช่น ซอฟต์แวร์ที่ต้องใช้, อุปกรณ์พิเศษ..."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- Submit Section -->
+            <div class="submit-section">
+                <button type="button" class="btn-submit" onclick="handleSubmit()">
+                    Submit Request
+                </button>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Success Modal -->
+    <div class="modal-overlay" id="successModal">
+        <div class="modal">
+            <div class="modal-icon-wrap">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12" />
+                </svg>
+            </div>
+            <h2>ส่งข้อมูลเรียบร้อย!</h2>
+            <p>ข้อมูลการจองของคุณถูกส่งเข้าสู่ระบบ (Google Sheets)<br>เรียบร้อยแล้ว Admin จะดำเนินการตรวจสอบต่อไป</p>
+            <div class="preview" id="previewBox"></div>
+            <button class="btn-close" onclick="closeModal()">ปิด (Close)</button>
+        </div>
+    </div>
+
+    <script>
+        const ADMIN_EMAIL = 'paramet@siit.tu.ac.th';
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwfyN8U-i80r7HO2h58oQOjsutFp8yeDC5R1TmwxdRDFazlERJ0Mfy2DwyqmghQ3PAu9w/exec';
+
+        const TIME_OPTIONS = [
+            "08:00", "08:30", "09:00", "09:30", "10:00", "10:30",
+            "11:00", "11:30", "12:00", "12:30", "13:00", "13:30",
+            "14:00", "14:30", "15:00", "15:30", "16:00", "16:30",
+            "17:00", "17:30", "18:00", "18:30", "19:00", "19:30",
+            "20:00", "20:30", "21:00"
+        ];
+
+        const startEl = document.getElementById('startTime');
+        const endEl = document.getElementById('endTime');
+
+        function populateStart() {
+            startEl.innerHTML = '';
+            TIME_OPTIONS.slice(0, -1).forEach(t => {
+                const o = document.createElement('option');
+                o.value = t; o.textContent = t;
+                startEl.appendChild(o);
+            });
+        }
+
+        function populateEnd() {
+            const idx = TIME_OPTIONS.indexOf(startEl.value);
+            const prev = endEl.value;
+            endEl.innerHTML = '';
+            TIME_OPTIONS.slice(idx + 1).forEach(t => {
+                const o = document.createElement('option');
+                o.value = t; o.textContent = t;
+                endEl.appendChild(o);
+            });
+            if ([...endEl.options].some(o => o.value === prev)) endEl.value = prev;
+        }
+
+        populateStart();
+        populateEnd();
+        startEl.addEventListener('change', populateEnd);
+
+        function validateForm() {
+            let ok = true;
+            ['lecturerName', 'email', 'courseName', 'program', 'totalStudents'].forEach(id => {
+                const el = document.getElementById(id);
+                if (!el.value.trim()) {
+                    el.classList.add('input-error');
+                    el.focus();
+                    ok = false;
+                    setTimeout(() => el.classList.remove('input-error'), 2500);
+                }
+            });
+            if (!ok) return false;
+            const s = parseInt(document.getElementById('totalStudents').value);
+            if (isNaN(s) || s <= 0) { alert('กรุณากรอกจำนวนนักศึกษา'); return false; }
+            return true;
+        }
+
+        async function handleSubmit() {
+            if (!validateForm()) return;
+
+            const submitBtn = document.querySelector('.btn-submit');
+            const originalBtnHTML = submitBtn.innerHTML;
+
+            // Disable button and show loading state
+            submitBtn.disabled = true;
+            submitBtn.style.opacity = '0.7';
+            submitBtn.innerHTML = `
+            <svg class="spinner" viewBox="0 0 50 50" style="width: 16px; height: 16px; margin-right: 8px; animation: spin 1s linear infinite;">
+                <circle cx="25" cy="25" r="20" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-dasharray="90, 150" stroke-dashoffset="0"></circle>
+            </svg>
+            <style>@keyframes spin { 100% { transform: rotate(360deg); } }</style>
+            Submitting...
+        `;
+
+            const d = {};
+            ['campus', 'term', 'year', 'lecturerName', 'email', 'courseName', 'program',
+                'section', 'totalStudents', 'requestedDay', 'startTime', 'endTime', 'remarks']
+                .forEach(id => d[id] = document.getElementById(id).value);
+
+            // Build the booking object
+            const bookingData = {
+                ...d,
+                requestedTime: `${d.startTime} - ${d.endTime}`,
+                requestedSlot: `${d.requestedDay} ${d.startTime} - ${d.endTime}`,
+                status: 'pending',
+                source: 'standalone-form',
+                submittedAt: new Date().toISOString()
+            };
+
+            try {
+                // Send data to Google Apps Script
+                const response = await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    body: JSON.stringify(bookingData),
+                    // Using no-cors because Google Apps Script Web Apps often have strict CORS policies
+                    mode: 'no-cors'
+                });
+
+                document.getElementById('previewBox').innerHTML = [
+                    ['Course', d.courseName],
+                    ['Lecturer', d.lecturerName],
+                    ['Program', `${d.program} / ${d.section}`],
+                    ['Students', `${d.totalStudents} คน`],
+                    ['Day', d.requestedDay],
+                    ['Time', `${d.startTime} - ${d.endTime}`],
+                    ['Campus', d.campus]
+                ].map(([l, v]) => `<div class="prow"><span class="plabel">${l}</span><span class="pvalue">${v}</span></div>`).join('');
+
+                document.getElementById('successModal').classList.add('active');
+
+            } catch (error) {
+                console.error('Error sending data:', error);
+                alert('เกิดข้อผิดพลาดในการส่งข้อมูล กรุณาลองใหม่อีกครั้ง หรือตรวจสอบการเชื่อมต่ออินเทอร์เน็ต');
+            } finally {
+                // Reset button state
+                submitBtn.disabled = false;
+                submitBtn.style.opacity = '1';
+                submitBtn.innerHTML = originalBtnHTML;
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('successModal').classList.remove('active');
+            // Reset all inputs
+            ['lecturerName', 'email', 'courseName', 'program', 'totalStudents', 'remarks'].forEach(id => document.getElementById(id).value = '');
+            document.getElementById('campus').selectedIndex = 0;
+            document.getElementById('term').selectedIndex = 0;
+            document.getElementById('section').selectedIndex = 0;
+            document.getElementById('requestedDay').selectedIndex = 0;
+            populateStart(); populateEnd();
+        }
+    </script>
+
+</body>
+
+</html>

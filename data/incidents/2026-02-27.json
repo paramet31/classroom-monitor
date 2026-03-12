@@ -1,0 +1,235 @@
+{
+  "3203": {
+    "latestStatus": "Idle",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "3204": {
+    "latestStatus": "Idle",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "3303": {
+    "latestStatus": "Idle",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "3304": {
+    "latestStatus": "Idle",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "3305": {
+    "latestStatus": "Idle",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "3401": {
+    "latestStatus": "Idle",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "1-301": {
+    "latestStatus": "Finished",
+    "ongoingIncident": {
+      "startTime": "2026-02-26T01:49:00.000Z",
+      "fileTimeWhenStopped": "08:49",
+      "reason": "Finished"
+    },
+    "incidentHistory": []
+  },
+  "1-304": {
+    "latestStatus": "Idle",
+    "ongoingIncident": {
+      "startTime": "2026-02-27T02:06:26.281Z",
+      "fileTimeWhenStopped": "",
+      "reason": "Idle"
+    },
+    "incidentHistory": [
+      {
+        "startTime": "2026-02-26T03:52:16.004Z",
+        "endTime": "2026-02-27T01:18:29.014Z",
+        "durationMinutes": 1286,
+        "reason": "Finished",
+        "resolution": "Class period ended",
+        "lastFileTime": ""
+      }
+    ]
+  },
+  "1-306": {
+    "latestStatus": "Active",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "1-307": {
+    "latestStatus": "Idle",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "1-312": {
+    "latestStatus": "Active",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "1-313": {
+    "latestStatus": "Active",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "1-401": {
+    "latestStatus": "Idle",
+    "ongoingIncident": {
+      "startTime": "2026-02-27T02:06:27.906Z",
+      "fileTimeWhenStopped": "",
+      "reason": "Idle"
+    },
+    "incidentHistory": []
+  },
+  "1-402": {
+    "latestStatus": "Idle",
+    "ongoingIncident": {
+      "startTime": "2026-02-27T02:06:28.218Z",
+      "fileTimeWhenStopped": "",
+      "reason": "Idle"
+    },
+    "incidentHistory": []
+  },
+  "1-403": {
+    "latestStatus": "Idle",
+    "ongoingIncident": {
+      "startTime": "2026-02-27T02:06:28.529Z",
+      "fileTimeWhenStopped": "",
+      "reason": "Idle"
+    },
+    "incidentHistory": []
+  },
+  "1-404": {
+    "latestStatus": "Idle",
+    "ongoingIncident": {
+      "startTime": "2026-02-27T02:06:28.846Z",
+      "fileTimeWhenStopped": "",
+      "reason": "Idle"
+    },
+    "incidentHistory": []
+  },
+  "1-405": {
+    "latestStatus": "Idle",
+    "ongoingIncident": {
+      "startTime": "2026-02-27T02:06:29.155Z",
+      "fileTimeWhenStopped": "",
+      "reason": "Idle"
+    },
+    "incidentHistory": []
+  },
+  "1-406": {
+    "latestStatus": "Idle",
+    "ongoingIncident": {
+      "startTime": "2026-02-27T02:06:29.468Z",
+      "fileTimeWhenStopped": "",
+      "reason": "Idle"
+    },
+    "incidentHistory": []
+  },
+  "1-407": {
+    "latestStatus": "Idle",
+    "ongoingIncident": {
+      "startTime": "2026-02-27T02:06:29.782Z",
+      "fileTimeWhenStopped": "",
+      "reason": "Idle"
+    },
+    "incidentHistory": []
+  },
+  "1-408": {
+    "latestStatus": "Active",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "1-409": {
+    "latestStatus": "Active",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "1-410": {
+    "latestStatus": "Active",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "1-411": {
+    "latestStatus": "Idle",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "1-501": {
+    "latestStatus": "Idle",
+    "ongoingIncident": {
+      "startTime": "2026-02-27T02:06:31.386Z",
+      "fileTimeWhenStopped": "",
+      "reason": "Idle"
+    },
+    "incidentHistory": []
+  },
+  "1-502": {
+    "latestStatus": "Idle",
+    "ongoingIncident": {
+      "startTime": "2026-02-27T02:06:31.704Z",
+      "fileTimeWhenStopped": "",
+      "reason": "Idle"
+    },
+    "incidentHistory": []
+  },
+  "1-503": {
+    "latestStatus": "Stopped",
+    "ongoingIncident": {
+      "startTime": "2026-02-27T01:49:00.000Z",
+      "fileTimeWhenStopped": "08:49",
+      "reason": "Stopped"
+    },
+    "incidentHistory": []
+  },
+  "1-504": {
+    "latestStatus": "Stopped",
+    "ongoingIncident": {
+      "startTime": "2026-02-27T01:33:00.000Z",
+      "fileTimeWhenStopped": "08:33",
+      "reason": "Stopped"
+    },
+    "incidentHistory": []
+  },
+  "1-506": {
+    "latestStatus": "Idle",
+    "ongoingIncident": {
+      "startTime": "2026-02-27T02:06:32.708Z",
+      "fileTimeWhenStopped": "",
+      "reason": "Idle"
+    },
+    "incidentHistory": [
+      {
+        "startTime": "2026-02-26T03:52:22.273Z",
+        "endTime": "2026-02-27T01:18:35.779Z",
+        "durationMinutes": 1286,
+        "reason": "Idle",
+        "resolution": "Class period ended",
+        "lastFileTime": ""
+      }
+    ]
+  },
+  "1-507": {
+    "latestStatus": "Idle",
+    "ongoingIncident": {
+      "startTime": "2026-02-27T02:06:33.022Z",
+      "fileTimeWhenStopped": "",
+      "reason": "Idle"
+    },
+    "incidentHistory": []
+  },
+  "1-101": {
+    "latestStatus": "Idle",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "1-102": {
+    "latestStatus": "Idle",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  }
+}

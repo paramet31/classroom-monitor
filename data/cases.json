@@ -1,0 +1,48 @@
+[
+  {
+    "id": "CASE-8EDU",
+    "title": "Setup - new encoder 1-306",
+    "description": "not detect source until 09:13 - now",
+    "createdBy": "paramet@siit.tu.ac.th",
+    "assignee": "paramet@siit.tu.ac.th",
+    "status": "resolved",
+    "priority": "high",
+    "createdAt": "2026-03-04T03:00:15.186Z",
+    "progress": [
+      {
+        "note": "Hz on PC สูงกว่า 60Hz ทำให้ Encode มองเห็น source แต่ไม่สามารถบันทึกข้อมูลได้",
+        "by": "paramet@siit.tu.ac.th",
+        "at": "2026-03-05T01:33:42.362Z"
+      }
+    ],
+    "resolvedAt": "2026-03-05T01:33:42.362Z"
+  },
+  {
+    "id": "CASE-X48S",
+    "title": "test",
+    "description": "test",
+    "createdBy": "paramet@siit.tu.ac.th",
+    "assignee": "paramet@siit.tu.ac.th",
+    "status": "closed",
+    "priority": "medium",
+    "createdAt": "2026-02-25T05:41:44.764Z",
+    "progress": [
+      {
+        "note": "ทำการทดสอบ",
+        "by": "paramet@siit.tu.ac.th",
+        "at": "2026-02-25T05:47:05.078Z"
+      },
+      {
+        "note": "เสร็จแล้ว",
+        "by": "paramet@siit.tu.ac.th",
+        "at": "2026-02-25T05:47:21.615Z"
+      },
+      {
+        "note": "เทส",
+        "by": "paramet@siit.tu.ac.th",
+        "at": "2026-02-25T05:47:38.343Z"
+      }
+    ],
+    "resolvedAt": "2026-02-25T05:47:38.343Z"
+  }
+]

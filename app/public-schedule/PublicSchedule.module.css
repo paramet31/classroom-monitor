@@ -1,0 +1,210 @@
+.pageContainer {
+    min-height: 100vh;
+    background: #f8fafc;
+    color: #0f172a;
+    font-family: inherit;
+}
+
+.pageHeader {
+    background: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 2.5rem 2rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.headerContent {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.iconWrap {
+    width: 64px;
+    height: 64px;
+    background: #eff6ff;
+    color: #3b82f6;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 0.25rem;
+    letter-spacing: -0.02em;
+}
+
+.subtitle {
+    color: #64748b;
+    font-size: 1rem;
+}
+
+.mainContent {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.controls {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+    background: #ffffff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    border: 1px solid #e2e8f0;
+}
+
+.filterGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.filterGroup label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #475569;
+}
+
+.select {
+    padding: 0.75rem 1.25rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background: #f8fafc;
+    font-size: 0.95rem;
+    color: #0f172a;
+    outline: none;
+    min-width: 180px;
+    transition: all 0.2s;
+}
+
+.select:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.loading {
+    text-align: center;
+    padding: 4rem;
+    color: #64748b;
+    font-size: 1.1rem;
+}
+
+.scheduleList {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.roomSection {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
+}
+
+.roomTitle {
+    font-size: 1.25rem;
+    font-weight: 700;
+    padding: 1.25rem 1.5rem;
+    background: #f8fafc;
+    border-bottom: 1px solid #e2e8f0;
+    color: #0f172a;
+    display: flex;
+    align-items: center;
+}
+
+.roomTitle::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 24px;
+    background: #3b82f6;
+    border-radius: 4px;
+    margin-right: 0.75rem;
+}
+
+.tableWrapper {
+    overflow-x: auto;
+    padding: 0;
+}
+
+.scheduleTable {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 900px;
+}
+
+.scheduleTable th, .scheduleTable td {
+    border: 1px solid #e2e8f0;
+    padding: 0.75rem;
+    text-align: center;
+}
+
+.dayColHeader, .timeColHeader {
+    background: #f1f5f9;
+    color: #334155;
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+
+.dayCol {
+    background: #f8fafc;
+    font-weight: 600;
+    color: #334155;
+    text-align: left !important;
+    width: 100px;
+    position: sticky;
+    left: 0;
+    z-index: 10;
+}
+
+.slotActive {
+    vertical-align: top;
+    padding: 0.25rem !important;
+}
+
+.slotEmpty {
+    vertical-align: middle;
+}
+
+.emptyBucket {
+    background: rgba(241, 245, 249, 0.5);
+    border-radius: 4px;
+    min-height: 40px;
+}
+
+.bookingItem {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-left: 3px solid #3b82f6;
+    border-radius: 4px;
+    padding: 0.5rem;
+    text-align: left;
+    height: 100%;
+    min-height: 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.courseCode {
+    font-weight: 700;
+    font-size: 0.8rem;
+    color: #1e3a8a;
+    margin-bottom: 0.2rem;
+}
+
+.bookingTime {
+    font-size: 0.7rem;
+    color: #3b82f6;
+    font-weight: 500;
+}

@@ -1,0 +1,77 @@
+[
+  {
+    "id": "REQ-SDXQ6",
+    "email": "pornpimon@siit.tu.ac.th",
+    "to": "หัวหน้าฝ่าย / ผู้ช่วยหัวหน้าฝ่าย ศูนย์คอมพิวเตอร์และโสตทัศนศึกษา",
+    "subject": "ขอใช้อุปกรณ์",
+    "purpose": [
+      "handle"
+    ],
+    "detail": " พิธีมอบรางวัลเรียนดี ประจำปีการศึกษา 2024\nเเละรางวัลสร้างชื่อเสียงให้ SIIT ประจำปี 2024",
+    "items": [
+      {
+        "material": "ไมค์ลอย",
+        "quantity": "2",
+        "setupDatetime": "2026-03-23T13:00",
+        "usageDatetime": "2026-03-24T10:00",
+        "location": "R.3401, Edutivity Building (SIIT Rangsit)"
+      }
+    ],
+    "status": "approved",
+    "assignedTo": null,
+    "adminNotes": [],
+    "createdAt": "2026-02-25T08:42:47.166Z"
+  },
+  {
+    "id": "REQ-RD6US",
+    "email": "saowaphan@siit.tu.ac.th",
+    "to": "หัวหน้าฝ่าย / ผู้ช่วยหัวหน้าฝ่าย ศูนย์คอมพิวเตอร์และโสตทัศนศึกษา",
+    "subject": "ขอใช้อุปกรณ์",
+    "purpose": [
+      "handle"
+    ],
+    "detail": "",
+    "items": [
+      {
+        "material": "ไมค์ลอย",
+        "quantity": "",
+        "setupDatetime": "2026-03-03T09:00",
+        "usageDatetime": "2026-02-27T19:17",
+        "location": "501"
+      }
+    ],
+    "status": "pending",
+    "assignedTo": null,
+    "adminNotes": [],
+    "createdAt": "2026-02-25T08:14:12.724Z"
+  },
+  {
+    "id": "REQ-PMBB3",
+    "email": "paramet@siit.tu.ac.th",
+    "to": "หัวหน้าฝ่าย / ผู้ช่วยหัวหน้าฝ่าย ศูนย์คอมพิวเตอร์และโสตทัศนศึกษา",
+    "subject": "ขอใช้อุปกรณ์",
+    "purpose": [
+      "info"
+    ],
+    "detail": "test test test",
+    "items": [
+      {
+        "material": "test",
+        "quantity": "1",
+        "setupDatetime": "2025-12-31T12:00",
+        "usageDatetime": "2029-01-08T12:00",
+        "location": "test"
+      }
+    ],
+    "status": "approved",
+    "assignedTo": null,
+    "adminNotes": [
+      {
+        "note": "test functional new deploy",
+        "by": "paramet@siit.tu.ac.th",
+        "at": "2026-02-25T07:26:16.083Z"
+      }
+    ],
+    "createdAt": "2026-02-25T07:25:19.167Z"
+  }
+]
