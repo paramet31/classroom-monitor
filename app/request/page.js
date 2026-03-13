@@ -53,8 +53,13 @@ export default function RequestPage() {
                 setResult({ ok: true, msg: `ส่งคำร้องสำเร็จ! Ref: ${data.id}` });
                 setEmail(''); setSubject(''); setPurpose([]); setDetail('');
                 setItems([{ ...EMPTY }]);
-            } else setResult({ ok: false, msg: 'เกิดข้อผิดพลาด' });
-        } catch { setResult({ ok: false, msg: 'ไม่สามารถเชื่อมต่อได้' }); }
+            } else {
+                const errData = await res.json().catch(() => ({}));
+                setResult({ ok: false, msg: errData.details || errData.error || 'เกิดข้อผิดพลาด' });
+            }
+        } catch (e) { 
+            setResult({ ok: false, msg: 'ไม่สามารถเชื่อมต่อได้: ' + e.message }); 
+        }
         setSubmitting(false);
         setTimeout(() => setResult(null), 6000);
     };

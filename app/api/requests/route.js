@@ -62,17 +62,25 @@ export async function POST(request) {
         };
 
         requests.unshift(newReq);
-        await writeRequests(requests);
+        try {
+            await writeRequests(requests);
+        } catch (e) {
+            console.warn('[Storage] Failed to write to JSON (likely Vercel environment):', e.message);
+        }
 
         // ─── Send Email Notification (background) ───
         sendEmailNotification(newReq).catch(err => console.error('[Email Error]', err));
+        
+        // ─── Send Confirmation to User (background) ───
+        sendUserConfirmation(newReq).catch(err => console.error('[Confirmation Email Error]', err));
 
         // ─── Forward to Google Apps Script / Sheets (background) ───
         forwardToGoogleSheets(newReq).catch(err => console.error('[Sheets Error]', err));
 
         return NextResponse.json(newReq, { status: 201 });
     } catch (error) {
-        return NextResponse.json({ error: 'Failed to submit request' }, { status: 500 });
+        console.error('[POST /api/requests] Error:', error);
+        return NextResponse.json({ error: 'Failed to submit request', details: error.message }, { status: 500 });
     }
 }
 
@@ -122,6 +130,80 @@ async function sendEmailNotification(req) {
     });
 
     console.log('[Email] Sent to', TEAM.length, 'recipients');
+}
+
+// ─── User Confirmation Email ───
+async function sendUserConfirmation(req) {
+    const nodemailer = (await import('nodemailer')).default;
+    const user = process.env.EMAIL_USER;
+    const pass = process.env.EMAIL_PASS;
+    if (!user || !pass) return;
+
+    const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: { user, pass }
+    });
+
+    const purposeStr = (req.purpose || []).join(', ') || '-';
+    const itemsHtml = (req.items || []).map((item, i) => `
+        <div style="padding: 12px; background: #f8fafc; border-radius: 8px; margin-bottom: 8px; border: 1px solid #e2e8f0;">
+            <div style="font-weight: bold; color: #1e293b; margin-bottom: 4px;">Item ${i + 1}: ${item.material} (Qty: ${item.quantity})</div>
+            <div style="font-size: 13px; color: #64748b;">
+                <strong>Setup:</strong> ${item.setupDatetime || '-'}<br/>
+                <strong>Usage:</strong> ${item.usageDatetime || '-'}<br/>
+                <strong>Location:</strong> ${item.location || '-'}
+            </div>
+        </div>
+    `).join('');
+
+    const htmlContent = `
+    <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; background-color: #ffffff;">
+        <div style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); padding: 30px; text-align: center;">
+            <div style="color: #38bdf8; font-size: 14px; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px;">Submission Received</div>
+            <h1 style="color: #ffffff; margin: 0; font-size: 24px;">Request ID: ${req.id}</h1>
+        </div>
+        
+        <div style="padding: 30px;">
+            <p style="color: #475569; font-size: 16px; line-height: 1.6;">
+                เรียน คุณ <strong>${req.email}</strong>,<br/><br/>
+                เราได้รับคำร้องขอรับบริการ AV ของคุณเรียบร้อยแล้ว ขณะนี้คำร้องของคุณอยู่ในขั้นตอน **รอการตรวจสอบ (Pending)** โดยเจ้าหน้าที่จะดำเนินการตรวจสอบและติดต่อกลับโดยเร็วที่สุด
+            </p>
+
+            <div style="margin: 25px 0; padding: 20px; background: #f1f5f9; border-radius: 12px;">
+                <h3 style="margin-top: 0; color: #1e293b; font-size: 16px;">ข้อมูลสรุปการขอรับบริการ</h3>
+                <table style="width: 100%; font-size: 14px; color: #475569;">
+                    <tr>
+                        <td style="padding: 5px 0; width: 100px;"><strong>หัวข้อ:</strong></td>
+                        <td style="padding: 5px 0;">${req.subject}</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 5px 0;"><strong>วัตถุประสงค์:</strong></td>
+                        <td style="padding: 5px 0;">${purposeStr}</td>
+                    </tr>
+                </table>
+            </div>
+
+            <h3 style="color: #1e293b; font-size: 16px;">รายการอุปกรณ์ / สถานที่</h3>
+            ${itemsHtml}
+
+            <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e2e8f0; text-align: center;">
+                <p style="color: #94a3b8; font-size: 13px;">
+                    นี่คือการตอบกลับอัตโนมัติ กรุณาอย่าตอบกลับอีเมลฉบับนี้<br/>
+                    SIIT Computer & AV Center
+                </p>
+            </div>
+        </div>
+    </div>
+    `;
+
+    await transporter.sendMail({
+        from: `"SIIT AV Center" <${user}>`,
+        to: req.email,
+        subject: `เราได้รับคำร้องของคุณแล้ว [${req.id}] — ${req.subject}`,
+        html: htmlContent,
+    });
+
+    console.log(`[Confirmation Email] Success: Sent acknowledgment to ${req.email}`);
 }
 
 // ─── Google Sheets via Apps Script ───
