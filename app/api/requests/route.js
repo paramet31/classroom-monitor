@@ -68,14 +68,14 @@ export async function POST(request) {
             console.warn('[Storage] Failed to write to JSON (likely Vercel environment):', e.message);
         }
 
-        // ─── Send Email Notification (background) ───
-        sendEmailNotification(newReq).catch(err => console.error('[Email Error]', err));
+        // ─── Send Email Notification ───
+        await sendEmailNotification(newReq).catch(err => console.error('[Email Error]', err));
         
-        // ─── Send Confirmation to User (background) ───
-        sendUserConfirmation(newReq).catch(err => console.error('[Confirmation Email Error]', err));
+        // ─── Send Confirmation to User ───
+        await sendUserConfirmation(newReq).catch(err => console.error('[Confirmation Email Error]', err));
 
-        // ─── Forward to Google Apps Script / Sheets (background) ───
-        forwardToGoogleSheets(newReq).catch(err => console.error('[Sheets Error]', err));
+        // ─── Forward to Google Sheets ───
+        await forwardToGoogleSheets(newReq).catch(err => console.error('[Sheets Error]', err));
 
         return NextResponse.json(newReq, { status: 201 });
     } catch (error) {
