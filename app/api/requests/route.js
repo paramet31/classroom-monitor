@@ -20,12 +20,41 @@ function generateId() {
     return `REQ-${num}`;
 }
 
-// GET — list all requests
+// GET — list all requests (Sync with Cloud)
 export async function GET(request) {
     const { searchParams } = new URL(request.url);
     const status = searchParams.get('status');
 
     let requests = await readRequests();
+
+    // ─── Cloud Sync ───
+    const cloudUrl = process.env.GOOGLE_APPS_SCRIPT_AV_URL || process.env.GOOGLE_APPS_SCRIPT_URL;
+    console.log('[Sync] Checking Cloud Sync. URL:', cloudUrl ? 'Set' : 'MISSING');
+    if (cloudUrl) {
+        try {
+            console.log('[Sync] Fetching from Google Sheets...');
+            const cloudRes = await fetch(cloudUrl, { next: { revalidate: 0 } });
+            const cloudData = await cloudRes.json();
+            
+            if (Array.isArray(cloudData)) {
+                console.log(`[Sync] Received ${cloudData.length} items from Cloud`);
+                // Merge cloud data with local, using ID to avoid duplicates
+                const localIds = new Set(requests.map(r => r.id));
+                const newCloudItems = cloudData.filter(r => !localIds.has(r.id));
+                console.log(`[Sync] Found ${newCloudItems.length} new items to sync`);
+                
+                requests = [...requests, ...newCloudItems];
+                
+                if (newCloudItems.length > 0) {
+                    await writeRequests(requests).catch(err => console.error('[Sync] Write error:', err.message));
+                }
+            } else {
+                console.warn('[Sync] Cloud data is not an array:', cloudData);
+            }
+        } catch (e) {
+            console.error('[Sync Error] Failed to fetch from Sheets:', e.message);
+        }
+    }
 
     if (status && status !== 'all') {
         requests = requests.filter(r => r.status === status);
@@ -208,8 +237,8 @@ async function sendUserConfirmation(req) {
 
 // ─── Google Sheets via Apps Script ───
 async function forwardToGoogleSheets(req) {
-    const url = process.env.GOOGLE_APPS_SCRIPT_URL;
-    if (!url) { console.warn('[Sheets] No GOOGLE_APPS_SCRIPT_URL set'); return; }
+    const url = process.env.GOOGLE_APPS_SCRIPT_AV_URL || process.env.GOOGLE_APPS_SCRIPT_URL;
+    if (!url) { console.warn('[Sheets] No GOOGLE_APPS_SCRIPT_AV_URL set'); return; }
 
     const res = await fetch(url, {
         method: 'POST',

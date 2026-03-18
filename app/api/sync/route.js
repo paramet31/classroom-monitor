@@ -6,7 +6,8 @@ import { autoAssignRoom } from '../../../lib/roomConfig';
 const dataFilePath = path.join(process.cwd(), 'data', 'lab-bookings.json');
 
 // Replace with the user's latest deployed Web App URL
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwfyN8U-i80r7HO2h58oQOjsutFp8yeDC5R1TmwxdRDFazlERJ0Mfy2DwyqmghQ3PAu9w/exec';
+// Use environment variable for the script URL
+const GOOGLE_SCRIPT_URL = process.env.GOOGLE_APPS_SCRIPT_LAB_URL || process.env.GOOGLE_APPS_SCRIPT_URL;
 
 async function getBookingsData() {
     try {
@@ -37,47 +38,54 @@ export async function POST(request) {
         for (const row of googleDocsData) {
             // Generate deterministic ID based on timestamp 
             // The Google block saves it as ISO string like "2023-10-27T10:00:00.000Z"
-            const timestampStr = row['Timestamp'];
+            // Handle both Title Case (from Sheet) and camelCase (from Standalone Form JSON)
+            const timestampStr = row['Timestamp'] || row['submittedAt'];
             if (!timestampStr) continue;
             
             const timeVal = new Date(timestampStr).getTime();
+            const courseName = row['Course Name'] || row['courseName'];
             // Fallback unique ID just in case
-            const generatedId = `sync-${timeVal}-${row['Course Name']?.replace(/\s/g, '') || 'unknown'}`;
+            const generatedId = `sync-${timeVal}-${courseName?.replace(/\s/g, '') || 'unknown'}`;
             
             // Check if already exists in local DB
             const isDuplicate = existingBookings.some(b => 
                 (b.id === generatedId) || 
-                (b.submittedAt === timestampStr && b.courseCode === row['Course Name']) 
+                (b.submittedAt === timestampStr && b.courseCode === courseName) 
             );
 
             if (!isDuplicate) {
                 // Determine auto-assigned room
-                const slot = row['Requested Slot'];
+                const slot = row['Requested Slot'] || row['requestedSlot'];
+                const totalStudents = parseInt(row['Total Students'] || row['totalStudents'] || '0', 10);
+                const campus = row['Campus'] || row['campus'];
+                const year = row['Year'] || row['year'];
+                const term = row['Term'] || row['term'];
+
                 const autoResult = autoAssignRoom(
-                    row['Campus'],
-                    parseInt(row['Total Students'] || '0', 10),
+                    campus,
+                    totalStudents,
                     slot,
-                    row['Year'],
-                    row['Term'],
+                    year,
+                    term,
                     syncedBookings
                 );
 
                 const newBooking = {
                     id: generatedId,
-                    campus: row['Campus'],
-                    term: row['Term'],
-                    year: row['Year']?.toString(), // Ensure string
-                    lecturerName: row['Lecturer Name'],
-                    email: row['Email'],
-                    courseCode: row['Course Name'],
-                    program: row['Program'],
-                    section: row['Section'],
-                    totalStudents: parseInt(row['Total Students'] || '0', 10),
-                    requestedDay: row['Requested Day'] || (slot ? slot.split(' ')[0] : ''),
+                    campus: campus,
+                    term: term,
+                    year: year?.toString(), // Ensure string
+                    lecturerName: row['Lecturer Name'] || row['lecturerName'],
+                    email: row['Email'] || row['email'],
+                    courseCode: courseName,
+                    program: row['Program'] || row['program'],
+                    section: row['Section'] || row['section'],
+                    totalStudents: totalStudents,
+                    requestedDay: row['Requested Day'] || row['requestedDay'] || (slot ? slot.split(' ')[0] : ''),
                     requestedSlot: slot,
-                    remarks: row['Remarks'],
-                    status: row['Status'] || 'pending',
-                    source: row['Source'] || 'google-sheet-sync',
+                    remarks: row['Remarks'] || row['remarks'],
+                    status: row['Status'] || row['status'] || 'pending',
+                    source: row['Source'] || row['source'] || 'google-sheet-sync',
                     room: autoResult.room || '',
                     initialRoom: autoResult.room || '',
                     createdAt: timestampStr,

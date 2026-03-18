@@ -263,6 +263,13 @@ export async function GET(request) {
     }
 
     const dateString = getTodayDateString();
+    const now = Date.now();
+
+    // Check if we have valid cache
+    if (memoryCache[campus] && (now - cacheTime[campus] < CACHE_TTL)) {
+        console.log(`[API] Serving ${campus} from memory cache...`);
+        return NextResponse.json(memoryCache[campus]);
+    }
 
     // Deduplicate concurrent requests — if another request is already in-flight, wait for it
     if (pendingRequests[campus]) {
@@ -277,6 +284,11 @@ export async function GET(request) {
 
     // Create the promise and store it BEFORE awaiting
     const fetchPromise = performHardwareCheck(campus, config, dateString)
+        .then(results => {
+            memoryCache[campus] = results;
+            cacheTime[campus] = Date.now();
+            return results;
+        })
         .catch(err => {
             console.error(`[API] Hardware check failed for ${campus}:`, err);
             return [];
