@@ -6,6 +6,21 @@ import { RefreshCw, AlertTriangle, CheckCircle, XCircle, Search, Send, ChevronDo
 import styles from './Dashboard.module.css';
 import RoomDetailModal from './RoomDetailModal';
 
+// Mapping Room ID to Encoder IP
+const ENCODER_IPS = {
+    '1-101': '192.168.201.31', '1-102': '192.168.201.63', '1-301': '192.168.201.32',
+    '1-304': '192.168.201.33', '1-306': '192.168.201.34', '1-307': '192.168.201.64',
+    '1-312': '192.168.201.35', '1-313': '192.168.201.36', '1-401': '192.168.201.37',
+    '1-402': '192.168.201.38', '1-403': '192.168.201.39', '1-404': '192.168.201.40',
+    '1-405': '192.168.201.42', '1-406': '192.168.201.43', '1-407': '192.168.201.45',
+    '1-408': '192.168.201.46', '1-409': '192.168.201.47', '1-410': '192.168.201.48',
+    '1-411': '192.168.201.49', '1-501': '192.168.201.50', '1-502': '192.168.201.51',
+    '1-503': '192.168.201.52', '1-504': '192.168.201.53', '1-506': '192.168.201.54',
+    '1-507': '192.168.201.55', '3203': '192.168.201.56', '3204': '192.168.201.57',
+    '3303': '192.168.201.58', '3304': '192.168.201.59', '3305': '192.168.201.60',
+    '3401': '192.168.201.61'
+};
+
 export default function Dashboard() {
     const [selectedCampus, setSelectedCampus] = useState('RS');
     const [rooms, setRooms] = useState([]);
@@ -253,6 +268,18 @@ export default function Dashboard() {
                                     <td>
                                         <div className={styles.cellRoom}>
                                             <span className={styles.roomId}>{room.id}</span>
+                                            {ENCODER_IPS[room.id] && (
+                                                <a 
+                                                    href={`http://${ENCODER_IPS[room.id]}`} 
+                                                    target="_blank" 
+                                                    rel="noopener noreferrer"
+                                                    className={styles.encoderIp}
+                                                    title="Open Encoder IP"
+                                                    onClick={(e) => e.stopPropagation()}
+                                                >
+                                                    {ENCODER_IPS[room.id]}
+                                                </a>
+                                            )}
                                         </div>
                                     </td>
                                     <td>{getStatusBadge(room.recordFile)}</td>

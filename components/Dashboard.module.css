@@ -319,6 +319,20 @@
     font-size: 0.85rem;
 }
 
+.encoderIp {
+    font-family: var(--font-mono);
+    font-size: 0.70rem;
+    color: #58a6ff;
+    text-decoration: none;
+    margin-top: 0.15rem;
+    transition: opacity 0.2s;
+}
+
+.encoderIp:hover {
+    text-decoration: underline;
+    opacity: 0.8;
+}
+
 /* Badges */
 .badge {
     display: inline-flex;
