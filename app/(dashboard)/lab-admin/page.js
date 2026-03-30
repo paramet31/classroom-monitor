@@ -394,9 +394,9 @@ export default function LabAdminPage() {
             <div>
                 <div className={styles.filters}>
                     <select value={filterYear} onChange={e => setFilterYear(e.target.value)} className={styles.filterSelect}>
-                        <option value="2025">Year 2025</option>
-                        <option value="2026">Year 2026</option>
-                        <option value="2027">Year 2027</option>
+                        {Array.from({length: 11}, (_, i) => 2025 + i).map(y => (
+                            <option key={y} value={String(y)}>Year {y}</option>
+                        ))}
                     </select>
                     <select value={filterTerm} onChange={e => setFilterTerm(e.target.value)} className={styles.filterSelect}>
                         <option value="Term 1">Term 1</option>
