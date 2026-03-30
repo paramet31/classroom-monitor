@@ -1,0 +1,302 @@
+{
+  "3203": {
+    "latestStatus": "Finished",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "3204": {
+    "latestStatus": "Idle",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "3303": {
+    "latestStatus": "Idle",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "3304": {
+    "latestStatus": "Idle",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "3305": {
+    "latestStatus": "Idle",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "3401": {
+    "latestStatus": "Idle",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "1-301": {
+    "latestStatus": "Idle",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "1-304": {
+    "latestStatus": "Bad Recording",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "1-306": {
+    "latestStatus": "Active",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "1-307": {
+    "latestStatus": "Finished",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "1-312": {
+    "latestStatus": "Idle",
+    "ongoingIncident": null,
+    "incidentHistory": [
+      {
+        "startTime": "2026-03-27T06:07:00.000Z",
+        "endTime": "2026-03-27T06:16:04.558Z",
+        "durationMinutes": 9,
+        "reason": "Stopped",
+        "resolution": "Recording resumed",
+        "lastFileTime": "13:07"
+      }
+    ]
+  },
+  "1-313": {
+    "latestStatus": "Idle",
+    "ongoingIncident": null,
+    "incidentHistory": [
+      {
+        "startTime": "2026-03-27T02:26:00.000Z",
+        "endTime": "2026-03-27T04:43:04.791Z",
+        "durationMinutes": 137,
+        "reason": "Finished",
+        "resolution": "Recording resumed",
+        "lastFileTime": "09:26"
+      }
+    ]
+  },
+  "1-401": {
+    "latestStatus": "Idle",
+    "ongoingIncident": null,
+    "incidentHistory": [
+      {
+        "startTime": "2026-03-27T08:03:00.000Z",
+        "endTime": "2026-03-27T09:00:10.015Z",
+        "durationMinutes": 57,
+        "reason": "Stopped",
+        "resolution": "Class period ended",
+        "lastFileTime": "15:03"
+      },
+      {
+        "startTime": "2026-03-27T07:19:00.000Z",
+        "endTime": "2026-03-27T07:55:04.782Z",
+        "durationMinutes": 36,
+        "reason": "Stopped",
+        "resolution": "Recording resumed",
+        "lastFileTime": "14:19"
+      },
+      {
+        "startTime": "2026-03-27T04:45:00.000Z",
+        "endTime": "2026-03-27T05:01:04.888Z",
+        "durationMinutes": 16,
+        "reason": "Stopped",
+        "resolution": "Class period ended",
+        "lastFileTime": "11:45"
+      }
+    ]
+  },
+  "1-402": {
+    "latestStatus": "Idle",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "1-403": {
+    "latestStatus": "Idle",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "1-404": {
+    "latestStatus": "Idle",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "1-405": {
+    "latestStatus": "Idle",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "1-406": {
+    "latestStatus": "Idle",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "1-407": {
+    "latestStatus": "Idle",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "1-408": {
+    "latestStatus": "Idle",
+    "ongoingIncident": null,
+    "incidentHistory": [
+      {
+        "startTime": "2026-03-27T08:20:00.000Z",
+        "endTime": "2026-03-27T09:00:10.966Z",
+        "durationMinutes": 40,
+        "reason": "Stopped",
+        "resolution": "Class period ended",
+        "lastFileTime": "15:20"
+      },
+      {
+        "startTime": "2026-03-27T06:48:00.000Z",
+        "endTime": "2026-03-27T08:21:11.202Z",
+        "durationMinutes": 93,
+        "reason": "Finished",
+        "resolution": "Recording resumed",
+        "lastFileTime": "13:48"
+      }
+    ]
+  },
+  "1-409": {
+    "latestStatus": "Idle",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "1-410": {
+    "latestStatus": "Bad Recording",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "1-411": {
+    "latestStatus": "Idle",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "1-501": {
+    "latestStatus": "Idle",
+    "ongoingIncident": null,
+    "incidentHistory": [
+      {
+        "startTime": "2026-03-27T03:33:00.000Z",
+        "endTime": "2026-03-27T03:43:06.329Z",
+        "durationMinutes": 10,
+        "reason": "Stopped",
+        "resolution": "Recording resumed",
+        "lastFileTime": "10:33"
+      },
+      {
+        "startTime": "2026-03-26T09:54:00.000Z",
+        "endTime": "2026-03-27T02:01:06.798Z",
+        "durationMinutes": 967,
+        "reason": "Finished",
+        "resolution": "Recording resumed",
+        "lastFileTime": "16:54"
+      }
+    ]
+  },
+  "1-502": {
+    "latestStatus": "Idle",
+    "ongoingIncident": null,
+    "incidentHistory": [
+      {
+        "startTime": "2026-03-27T07:11:00.000Z",
+        "endTime": "2026-03-27T07:30:11.633Z",
+        "durationMinutes": 19,
+        "reason": "Stopped",
+        "resolution": "Class period ended",
+        "lastFileTime": "14:11"
+      },
+      {
+        "startTime": "2026-03-27T04:46:00.000Z",
+        "endTime": "2026-03-27T05:01:06.357Z",
+        "durationMinutes": 15,
+        "reason": "Stopped",
+        "resolution": "Class period ended",
+        "lastFileTime": "11:46"
+      },
+      {
+        "startTime": "2026-03-27T03:31:06.460Z",
+        "endTime": "2026-03-27T03:43:06.502Z",
+        "durationMinutes": 12,
+        "reason": "Idle",
+        "resolution": "Recording resumed",
+        "lastFileTime": ""
+      }
+    ]
+  },
+  "1-503": {
+    "latestStatus": "Idle",
+    "ongoingIncident": null,
+    "incidentHistory": [
+      {
+        "startTime": "2026-03-27T08:29:00.000Z",
+        "endTime": "2026-03-27T09:00:11.760Z",
+        "durationMinutes": 31,
+        "reason": "Stopped",
+        "resolution": "Class period ended",
+        "lastFileTime": "15:29"
+      },
+      {
+        "startTime": "2026-03-27T04:38:00.000Z",
+        "endTime": "2026-03-27T05:01:06.487Z",
+        "durationMinutes": 23,
+        "reason": "Stopped",
+        "resolution": "Class period ended",
+        "lastFileTime": "11:38"
+      }
+    ]
+  },
+  "1-504": {
+    "latestStatus": "Idle",
+    "ongoingIncident": null,
+    "incidentHistory": [
+      {
+        "startTime": "2026-03-27T04:37:00.000Z",
+        "endTime": "2026-03-27T05:01:06.612Z",
+        "durationMinutes": 24,
+        "reason": "Stopped",
+        "resolution": "Class period ended",
+        "lastFileTime": "11:37"
+      },
+      {
+        "startTime": "2026-03-26T09:54:00.000Z",
+        "endTime": "2026-03-27T02:01:07.253Z",
+        "durationMinutes": 967,
+        "reason": "Finished",
+        "resolution": "Recording resumed",
+        "lastFileTime": "16:54"
+      }
+    ]
+  },
+  "1-506": {
+    "latestStatus": "Idle",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "1-507": {
+    "latestStatus": "Idle",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  },
+  "1-101": {
+    "latestStatus": "Idle",
+    "ongoingIncident": null,
+    "incidentHistory": [
+      {
+        "startTime": "2026-03-27T02:44:00.000Z",
+        "endTime": "2026-03-27T05:01:03.873Z",
+        "durationMinutes": 137,
+        "reason": "Finished",
+        "resolution": "Class period ended",
+        "lastFileTime": "09:44"
+      }
+    ]
+  },
+  "1-102": {
+    "latestStatus": "Active",
+    "ongoingIncident": null,
+    "incidentHistory": []
+  }
+}
