@@ -6,7 +6,7 @@ export function proxy(request) {
 
     // Paths that don't require authentication
     const isAuthRoute = pathname.startsWith('/login') || pathname.startsWith('/api/auth') || pathname.startsWith('/request') || pathname.startsWith('/api/requests');
-    const isPublicRoute = pathname.startsWith('/_next') || pathname.startsWith('/favicon.ico') || pathname.startsWith('/public') || pathname.startsWith('/api/lab-booking');
+    const isPublicRoute = pathname.startsWith('/_next') || pathname.startsWith('/favicon.ico') || pathname.startsWith('/public') || pathname.startsWith('/api/lab-booking') || pathname.startsWith('/api/google-sheets-bookings') || pathname.startsWith('/api/sync');
 
     if (isPublicRoute) {
         return NextResponse.next();
