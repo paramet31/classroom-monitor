@@ -165,8 +165,8 @@
   "monitoring": {
     "activeThresholdMinutes": 5,
     "stoppedThresholdMinutes": 60,
-    "refreshIntervalSeconds": 300,
-    "gracePeriodMinutes": 15
+    "refreshIntervalSeconds": 180,
+    "gracePeriodMinutes": 5
   },
   "automation": {
     "dailyReportEnabled": true,

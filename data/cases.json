@@ -1,5 +1,23 @@
 [
   {
+    "id": "CASE-NRRH",
+    "title": "encoder ",
+    "description": "offline : 1-304, 1-407, 3203",
+    "createdBy": "paramet@siit.tu.ac.th",
+    "assignee": "paramet@siit.tu.ac.th",
+    "status": "resolved",
+    "priority": "high",
+    "createdAt": "2026-03-17T04:43:54.317Z",
+    "progress": [
+      {
+        "note": "เป็นที่ Server Red5 ของฝั่งทีม Network ",
+        "by": "paramet@siit.tu.ac.th",
+        "at": "2026-03-23T05:47:06.596Z"
+      }
+    ],
+    "resolvedAt": "2026-03-23T05:47:06.596Z"
+  },
+  {
     "id": "CASE-8EDU",
     "title": "Setup - new encoder 1-306",
     "description": "not detect source until 09:13 - now",
