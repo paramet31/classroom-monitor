@@ -62,9 +62,9 @@ export default function PublicSchedulePage() {
                     <div className={styles.filterGroup}>
                         <label>Academic Year</label>
                         <select value={filterYear} onChange={e => setFilterYear(e.target.value)} className={styles.select}>
-                            <option value="2025">Year 2025</option>
-                            <option value="2026">Year 2026</option>
-                            <option value="2027">Year 2027</option>
+                            {Array.from({length: 11}, (_, i) => 2025 + i).map(y => (
+                                <option key={y} value={String(y)}>Year {y}</option>
+                            ))}
                         </select>
                     </div>
                     <div className={styles.filterGroup}>
