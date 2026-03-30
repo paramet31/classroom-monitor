@@ -30,7 +30,7 @@ export default function PublicSchedulePage() {
         }
     };
 
-    const approvedBookings = bookings.filter(b => b.status === 'approved' && b.year === filterYear && b.term === filterTerm);
+    const approvedBookings = bookings.filter(b => b.status === 'approved' && String(b.year) === filterYear && String(b.term).trim() === filterTerm);
     const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     
     const generateSlots = (startH, endH) => {

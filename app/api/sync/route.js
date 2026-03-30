@@ -66,7 +66,7 @@ export async function POST(request) {
                 
                 const sheetRoom = row['Room'] || row['room'];
                 if (sheetRoom) {
-                    const properlyFormattedRoom = sheetRoom.startsWith('Lab ') ? sheetRoom : `Lab ${sheetRoom}`;
+                    const properlyFormattedRoom = String(sheetRoom).startsWith('Lab ') ? String(sheetRoom) : `Lab ${sheetRoom}`;
                     if (existingObj.room !== properlyFormattedRoom) {
                         existingObj.room = properlyFormattedRoom;
                         hasChanges = true;

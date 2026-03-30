@@ -27,13 +27,13 @@ export async function GET() {
             
             const slot = row['Requested Slot'] || row['requestedSlot'];
             const sheetRoom = row['Room'] || row['room'] || '';
-            const properlyFormattedRoom = sheetRoom.startsWith('Lab ') ? sheetRoom : (sheetRoom ? `Lab ${sheetRoom}` : '');
+            const properlyFormattedRoom = String(sheetRoom).startsWith('Lab ') ? String(sheetRoom) : (sheetRoom ? `Lab ${sheetRoom}` : '');
             
             return {
                 id: generatedId,
                 campus: row['Campus'] || row['campus'],
                 term: row['Term'] || row['term'],
-                year: (row['Year'] || row['year'])?.toString(),
+                year: String(row['Year'] || row['year'] || ''),
                 lecturerName: row['Lecturer Name'] || row['lecturerName'],
                 courseCode: courseName,
                 section: row['Section'] || row['section'],
