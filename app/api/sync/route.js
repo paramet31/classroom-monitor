@@ -45,7 +45,7 @@ export async function POST(request) {
             const timeVal = new Date(timestampStr).getTime();
             const courseName = row['Course Name'] || row['courseName'];
             // Fallback unique ID just in case
-            const generatedId = `sync-${timeVal}-${courseName?.replace(/\s/g, '') || 'unknown'}`;
+            const generatedId = `sync-${timeVal}-${courseName ? String(courseName).replace(/\s/g, '') : 'unknown'}`;
             
             // Check if already exists in local DB
             const existingIndex = existingBookings.findIndex(b => 

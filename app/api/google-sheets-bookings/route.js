@@ -23,7 +23,7 @@ export async function GET() {
             const timestampStr = row['Timestamp'] || row['submittedAt'];
             const timeVal = timestampStr ? new Date(timestampStr).getTime() : Date.now();
             const courseName = row['Course Name'] || row['courseName'];
-            const generatedId = `sync-${timeVal}-${courseName?.replace(/\\s/g, '') || 'unknown'}`;
+            const generatedId = `sync-${timeVal}-${courseName ? String(courseName).replace(/\\s/g, '') : 'unknown'}`;
             
             const slot = row['Requested Slot'] || row['requestedSlot'];
             const sheetRoom = row['Room'] || row['room'] || '';
