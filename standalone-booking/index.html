@@ -441,6 +441,181 @@
             background: #e5e7eb;
         }
 
+        /* === My Bookings Section === */
+        .bookings-wrapper {
+            margin-top: 2rem;
+        }
+
+        .bookings-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding: 2rem 3rem 1rem;
+        }
+
+        .bookings-header h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #111827;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .bookings-count {
+            font-size: 0.8rem;
+            color: #6b7280;
+            font-weight: 500;
+            margin-top: 0.25rem;
+        }
+
+        .search-bar {
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+            padding: 0 3rem 1.5rem;
+        }
+
+        .search-bar input {
+            flex: 1;
+            max-width: 400px;
+        }
+
+        .btn-search {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: #6366f1;
+            color: #fff;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: inherit;
+            white-space: nowrap;
+        }
+
+        .btn-search:hover {
+            background: #4f46e5;
+        }
+
+        .btn-search:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .bookings-table-wrap {
+            padding: 0 3rem 2rem;
+            overflow-x: auto;
+        }
+
+        .bookings-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            font-size: 0.85rem;
+        }
+
+        .bookings-table thead th {
+            text-align: left;
+            padding: 0.75rem 1rem;
+            font-weight: 600;
+            color: #6b7280;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-bottom: 2px solid #e5e7eb;
+            white-space: nowrap;
+        }
+
+        .bookings-table tbody tr {
+            transition: all 0.2s ease;
+        }
+
+        .bookings-table tbody tr:hover {
+            background: #f9fafb;
+        }
+
+        .bookings-table tbody td {
+            padding: 0.75rem 1rem;
+            color: #374151;
+            border-bottom: 1px solid #f3f4f6;
+            white-space: nowrap;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.2rem 0.65rem;
+            border-radius: 9999px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: capitalize;
+        }
+
+        .status-badge.pending {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .status-badge.approved {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .status-badge.rejected {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .btn-delete {
+            padding: 0.35rem 0.75rem;
+            border: 1px solid #fecaca;
+            border-radius: 6px;
+            background: #fff;
+            color: #ef4444;
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+
+        .btn-delete:hover {
+            background: #fef2f2;
+            border-color: #ef4444;
+        }
+
+        .btn-delete:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: #9ca3af;
+            font-size: 0.9rem;
+        }
+
+        .loading-state {
+            text-align: center;
+            padding: 2rem;
+            color: #6b7280;
+        }
+
+        @keyframes fadeSlideOut {
+            to {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
 
@@ -467,6 +642,21 @@
 
             .hero-section {
                 height: 180px;
+            }
+
+            .bookings-header,
+            .search-bar,
+            .bookings-table-wrap {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+
+            .search-bar {
+                flex-direction: column;
+            }
+
+            .search-bar input {
+                max-width: none;
             }
         }
     </style>
@@ -677,6 +867,28 @@
             </div>
 
         </div>
+
+        <!-- My Bookings Section -->
+        <div class="content-wrapper bookings-wrapper">
+            <div class="bookings-header">
+                <div>
+                    <h3>📋 My Submitted Bookings</h3>
+                    <p class="bookings-count" id="bookingsCount">กรอก Email แล้วกด Search เพื่อดูรายการจองของคุณ</p>
+                </div>
+            </div>
+            <div class="search-bar">
+                <input type="email" id="searchEmail" placeholder="Enter your email to search bookings..." />
+                <button type="button" class="btn-search" id="btnSearch" onclick="loadMyBookings()">
+                    🔍 Search
+                </button>
+            </div>
+            <div id="bookingsTableWrapper" class="bookings-table-wrap">
+                <div class="empty-state">
+                    <p>🔍 กรอก Email ด้านบนแล้วกด Search เพื่อดูรายการจองที่คุณส่งเข้ามา</p>
+                </div>
+            </div>
+        </div>
+
     </main>
 
     <!-- Success Modal -->
@@ -697,7 +909,7 @@
 
     <script>
         const ADMIN_EMAIL = 'paramet@siit.tu.ac.th';
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwfyN8U-i80r7HO2h58oQOjsutFp8yeDC5R1TmwxdRDFazlERJ0Mfy2DwyqmghQ3PAu9w/exec';
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby5lND8KYnPCNJL4Rf1ON9d55MVFSUmkD2sfqpXr85txxiiBX1xP06tYtEZ5jKRjZg8rw/exec';
 
         const TIME_OPTIONS = [
             "08:00", "08:30", "09:00", "09:30", "10:00", "10:30",
@@ -805,6 +1017,11 @@
 
                 document.getElementById('successModal').classList.add('active');
 
+                // Auto-populate search email and reload bookings table
+                document.getElementById('searchEmail').value = d.email;
+                localStorage.setItem('bookingSearchEmail', d.email);
+                setTimeout(() => loadMyBookings(), 500);
+
             } catch (error) {
                 console.error('Error sending data:', error);
                 alert('เกิดข้อผิดพลาดในการส่งข้อมูล กรุณาลองใหม่อีกครั้ง หรือตรวจสอบการเชื่อมต่ออินเทอร์เน็ต');
@@ -825,6 +1042,173 @@
             document.getElementById('section').selectedIndex = 0;
             document.getElementById('requestedDay').selectedIndex = 0;
             populateStart(); populateEnd();
+        }
+
+        // ==========================================
+        // My Bookings Feature
+        // ==========================================
+
+        // Auto-load saved email on page load
+        const savedEmail = localStorage.getItem('bookingSearchEmail');
+        if (savedEmail) {
+            document.getElementById('searchEmail').value = savedEmail;
+            setTimeout(() => loadMyBookings(), 300);
+        }
+
+        // Allow pressing Enter in email search
+        document.getElementById('searchEmail').addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') loadMyBookings();
+        });
+
+        async function loadMyBookings() {
+            const emailInput = document.getElementById('searchEmail');
+            const email = emailInput.value.trim();
+
+            if (!email) {
+                alert('กรุณากรอก Email เพื่อค้นหา');
+                emailInput.classList.add('input-error');
+                setTimeout(() => emailInput.classList.remove('input-error'), 2500);
+                return;
+            }
+
+            localStorage.setItem('bookingSearchEmail', email);
+
+            const wrapper = document.getElementById('bookingsTableWrapper');
+            const countEl = document.getElementById('bookingsCount');
+            const searchBtn = document.getElementById('btnSearch');
+
+            // Show loading
+            searchBtn.disabled = true;
+            searchBtn.textContent = '⏳ Loading...';
+            wrapper.innerHTML = '<div class="loading-state">⏳ กำลังโหลดข้อมูลจาก Google Sheets...</div>';
+
+            try {
+                const response = await fetch(GOOGLE_SCRIPT_URL + '?email=' + encodeURIComponent(email));
+                const data = await response.json();
+
+                if (!data || data.error || data.length === 0) {
+                    wrapper.innerHTML = '<div class="empty-state"><p>📭 ไม่พบรายการจองสำหรับ Email นี้</p></div>';
+                    countEl.textContent = '0 bookings found';
+                    return;
+                }
+
+                countEl.textContent = `${data.length} booking(s) found`;
+                renderBookingsTable(data);
+
+            } catch (error) {
+                console.error('Error loading bookings:', error);
+                wrapper.innerHTML = '<div class="empty-state" style="color: #ef4444;"><p>❌ ไม่สามารถโหลดข้อมูลได้<br><small style="color:#9ca3af;">กรุณาตรวจสอบว่า Google Apps Script ถูก deploy แล้ว (รองรับ doGet ที่ filter ด้วย email)</small></p></div>';
+            } finally {
+                searchBtn.disabled = false;
+                searchBtn.textContent = '🔍 Search';
+            }
+        }
+
+        function renderBookingsTable(data) {
+            const wrapper = document.getElementById('bookingsTableWrapper');
+            let html = `
+                <table class="bookings-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Course Name</th>
+                            <th>Program</th>
+                            <th>Section</th>
+                            <th>Day</th>
+                            <th>Time Slot</th>
+                            <th>Students</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+
+            data.forEach((b, i) => {
+                const course = b['Course Name'] || b.courseName || '-';
+                const program = b['Program'] || b.program || '-';
+                const section = b['Section'] || b.section || '-';
+                const day = b['Requested Day'] || b.requestedDay || '-';
+                const slot = b['Requested Slot'] || b.requestedSlot || '-';
+                const students = b['Total Students'] || b.totalStudents || '-';
+                const status = (b['Status'] || b.status || 'pending').toLowerCase();
+                const timestamp = b['Timestamp'] || b.submittedAt || '';
+
+                // Extract time only from slot
+                const timeSlot = slot.replace(/^(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)\s*/i, '') || slot;
+                const statusClass = status === 'approved' ? 'approved' : (status === 'rejected' ? 'rejected' : 'pending');
+                const canDelete = status !== 'approved';
+                const tsEscaped = timestamp.toString().replace(/'/g, "\\'");
+
+                html += `
+                    <tr id="booking-row-${i}">
+                        <td style="font-weight:600; color:#9ca3af;">${i + 1}</td>
+                        <td style="font-weight:600; color:#111827;">${course}</td>
+                        <td>${program}</td>
+                        <td>${section}</td>
+                        <td>${day}</td>
+                        <td>${timeSlot}</td>
+                        <td style="text-align:center;">${students}</td>
+                        <td><span class="status-badge ${statusClass}">${status}</span></td>
+                        <td>
+                            <button class="btn-delete" onclick="deleteBooking('${tsEscaped}', this)" ${!canDelete ? 'disabled title="ไม่สามารถลบรายการที่ approved แล้ว"' : ''}>
+                                🗑️ Delete
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            });
+
+            html += '</tbody></table>';
+            wrapper.innerHTML = html;
+        }
+
+        async function deleteBooking(timestamp, btnEl) {
+            if (!confirm('คุณต้องการลบรายการจองนี้หรือไม่?\nDelete this booking?')) return;
+
+            btnEl.disabled = true;
+            btnEl.textContent = '⏳...';
+
+            try {
+                // Send delete request to Google Apps Script
+                await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        action: 'delete',
+                        timestamp: timestamp
+                    }),
+                    mode: 'no-cors'
+                });
+
+                // Optimistic UI: animate and remove row
+                const row = btnEl.closest('tr');
+                row.style.animation = 'fadeSlideOut 0.3s ease forwards';
+
+                setTimeout(() => {
+                    row.remove();
+                    // Update count and re-number
+                    const tbody = document.querySelector('.bookings-table tbody');
+                    const remaining = tbody ? tbody.querySelectorAll('tr').length : 0;
+                    document.getElementById('bookingsCount').textContent = `${remaining} booking(s) found`;
+
+                    if (tbody) {
+                        tbody.querySelectorAll('tr').forEach((r, i) => {
+                            r.querySelector('td:first-child').textContent = i + 1;
+                        });
+                    }
+
+                    if (remaining === 0) {
+                        document.getElementById('bookingsTableWrapper').innerHTML =
+                            '<div class="empty-state"><p>📭 ไม่พบรายการจองสำหรับ Email นี้</p></div>';
+                    }
+                }, 300);
+
+            } catch (error) {
+                console.error('Error deleting booking:', error);
+                btnEl.disabled = false;
+                btnEl.textContent = '🗑️ Delete';
+                alert('เกิดข้อผิดพลาดในการลบ กรุณาลองใหม่');
+            }
         }
     </script>
 
