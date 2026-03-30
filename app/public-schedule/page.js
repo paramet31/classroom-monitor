@@ -18,7 +18,7 @@ export default function PublicSchedulePage() {
     const fetchBookings = async () => {
         setIsLoading(true);
         try {
-            const res = await fetch('/api/lab-booking');
+            const res = await fetch('/api/google-sheets-bookings', { cache: 'no-store' });
             if (res.ok) {
                 const data = await res.json();
                 setBookings(data);

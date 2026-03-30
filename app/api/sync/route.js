@@ -48,12 +48,36 @@ export async function POST(request) {
             const generatedId = `sync-${timeVal}-${courseName?.replace(/\s/g, '') || 'unknown'}`;
             
             // Check if already exists in local DB
-            const isDuplicate = existingBookings.some(b => 
+            const existingIndex = existingBookings.findIndex(b => 
                 (b.id === generatedId) || 
                 (b.submittedAt === timestampStr && b.courseCode === courseName) 
             );
 
-            if (!isDuplicate) {
+            if (existingIndex !== -1) {
+                // Update existing record if status or room changed (e.g., admin approval in Google Sheet)
+                const existingObj = syncedBookings[existingIndex];
+                let hasChanges = false;
+                
+                const sheetStatus = row['Status'] || row['status'];
+                if (sheetStatus && existingObj.status !== sheetStatus) {
+                    existingObj.status = sheetStatus;
+                    hasChanges = true;
+                }
+                
+                const sheetRoom = row['Room'] || row['room'];
+                if (sheetRoom) {
+                    const properlyFormattedRoom = sheetRoom.startsWith('Lab ') ? sheetRoom : `Lab ${sheetRoom}`;
+                    if (existingObj.room !== properlyFormattedRoom) {
+                        existingObj.room = properlyFormattedRoom;
+                        hasChanges = true;
+                    }
+                }
+
+                if (hasChanges) {
+                    existingObj.updatedAt = new Date().toISOString();
+                    newCount++;
+                }
+            } else {
                 // Determine auto-assigned room
                 const slot = row['Requested Slot'] || row['requestedSlot'];
                 const totalStudents = parseInt(row['Total Students'] || row['totalStudents'] || '0', 10);
